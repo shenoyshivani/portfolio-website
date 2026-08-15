@@ -1,0 +1,17 @@
+{
+  "name": "portfolio-website",
+  "version": "1.0.0",
+  "description": "Shivani Shenoy's Portfolio Website - MERN Stack",
+  "scripts": {
+    "server": "cd server && npm run dev",
+    "client": "cd client && npm run dev",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "build": "cd client && npm install && npm run build",
+    "start": "cd server && node index.js",
+    "install-all": "cd server && npm install && cd ../client && npm install",
+    "postinstall": "cd client && npm install && npm run build"
+  },
+  "dependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
