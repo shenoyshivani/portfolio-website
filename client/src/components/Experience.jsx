@@ -82,9 +82,9 @@ export default function Experience() {
                 width: '22px',
                 height: '22px',
                 borderRadius: '50%',
-                background: 'var(--color-1)',
+                background: 'var(--accent)',
                 border: '3px solid var(--bg-primary)',
-                boxShadow: '0 0 0 3px var(--color-1)40',
+                boxShadow: '0 0 0 3px var(--accent-glow)',
               }} />
 
               <div style={{
@@ -111,7 +111,7 @@ export default function Experience() {
                   gap: '0.75rem',
                   marginBottom: '0.5rem',
                 }}>
-                  <HiBriefcase style={{ color: 'var(--color-1)', fontSize: '1.2rem' }} />
+                  <HiBriefcase style={{ color: 'var(--accent)', fontSize: '1.2rem' }} />
                   <span style={{
                     fontSize: '0.85rem',
                     color: 'var(--text-muted)',
@@ -172,7 +172,7 @@ export default function Experience() {
                         minWidth: '6px',
                         height: '6px',
                         borderRadius: '50%',
-                        background: 'var(--color-4)',
+                        background: 'var(--accent)',
                         marginTop: '8px',
                       }} />
                       {desc}

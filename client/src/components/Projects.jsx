@@ -15,8 +15,7 @@ const projects = [
     ],
     tech: ['Python', 'ChromaDB', 'Groq API', 'Streamlit', 'NLP'],
     demo: 'https://drive.google.com/file/d/11QNlvFkVBAeYQV1S7mjrd91xBT7-2qe4/view?usp=drive_link',
-    color: 'var(--color-1)',
-    accentColor: 'var(--color-4)',
+    color: '#6c63ff',
   },
   {
     title: 'Fashion Recommendation System',
@@ -30,8 +29,7 @@ const projects = [
     ],
     tech: ['Python', 'TensorFlow', 'OpenCV', 'Streamlit', 'ML'],
     demo: 'https://drive.google.com/file/d/18J99ZH7ZFmMAcAsu1DnMzJge3poxfhPn/view?usp=drive_link',
-    color: 'var(--color-3)',
-    accentColor: 'var(--color-2)',
+    color: '#48c6ef',
   },
 ]
 
