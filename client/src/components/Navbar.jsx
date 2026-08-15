@@ -12,6 +12,14 @@ const navLinks = [
   { name: 'Contact', href: '#contact' },
 ]
 
+const WingsLogo = () => (
+  <svg viewBox="0 0 100 80" width="32" height="26" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M50 8 L15 45 L25 45 L50 20 L75 45 L85 45 Z" fill="var(--text-primary)" opacity="0.9"/>
+    <path d="M50 20 L30 50 L40 50 L50 35 L60 50 L70 50 Z" fill="var(--accent)"/>
+    <path d="M10 50 L50 75 L90 50 L75 55 L50 68 L25 55 Z" fill="var(--gold)" opacity="0.7"/>
+  </svg>
+)
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
@@ -39,7 +47,7 @@ export default function Navbar() {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: 'easeOut' }}
+      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       style={{
         position: 'fixed',
         top: 0,
@@ -63,17 +71,19 @@ export default function Navbar() {
         <motion.a
           href="#home"
           style={{
-            fontSize: '1.5rem',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+            fontFamily: "'Cinzel Decorative', serif",
+            fontSize: '1.3rem',
             fontWeight: 700,
-            background: 'var(--gradient)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            fontFamily: "'Space Grotesk', sans-serif",
+            color: 'var(--text-primary)',
           }}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          SS
+          <WingsLogo />
+          <span>SHIVANI</span>
         </motion.a>
 
         {/* Desktop Nav */}
@@ -89,13 +99,16 @@ export default function Navbar() {
               key={link.name}
               href={link.href}
               style={{
-                fontSize: '0.9rem',
-                fontWeight: activeSection === link.href.slice(1) ? 600 : 400,
-                color: activeSection === link.href.slice(1) ? 'var(--accent)' : 'var(--text-secondary)',
+                fontFamily: "'Oswald', sans-serif",
+                fontSize: '0.85rem',
+                fontWeight: 500,
+                letterSpacing: '1.5px',
+                textTransform: 'uppercase',
+                color: activeSection === link.href.slice(1) ? 'var(--gold)' : 'var(--text-secondary)',
                 transition: 'color 0.3s ease',
                 position: 'relative',
               }}
-              whileHover={{ color: 'var(--accent)' }}
+              whileHover={{ color: 'var(--gold)' }}
             >
               {link.name}
               {activeSection === link.href.slice(1) && (
@@ -107,7 +120,7 @@ export default function Navbar() {
                     left: 0,
                     right: 0,
                     height: 2,
-                    background: 'var(--accent)',
+                    background: 'var(--gradient)',
                     borderRadius: 1,
                   }}
                 />
@@ -118,19 +131,19 @@ export default function Navbar() {
           <motion.button
             onClick={toggleTheme}
             style={{
-              background: 'var(--bg-card)',
+              background: 'none',
               border: '1px solid var(--border)',
               borderRadius: '50%',
-              width: 40,
-              height: 40,
+              width: 36,
+              height: 36,
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               cursor: 'pointer',
-              color: 'var(--text-primary)',
-              fontSize: '1.2rem',
+              color: 'var(--text-secondary)',
+              fontSize: '1rem',
             }}
-            whileHover={{ scale: 1.1, rotate: 180 }}
+            whileHover={{ scale: 1.1, borderColor: 'var(--accent)', color: 'var(--accent)' }}
             whileTap={{ scale: 0.9 }}
             transition={{ duration: 0.3 }}
           >
@@ -146,8 +159,8 @@ export default function Navbar() {
               background: 'none',
               border: 'none',
               cursor: 'pointer',
-              color: 'var(--text-primary)',
-              fontSize: '1.3rem',
+              color: 'var(--text-secondary)',
+              fontSize: '1.2rem',
               marginRight: '0.5rem',
             }}
             whileTap={{ scale: 0.9 }}
@@ -179,10 +192,11 @@ export default function Navbar() {
             exit={{ opacity: 0, height: 0 }}
             style={{
               overflow: 'hidden',
-              background: 'var(--bg-secondary)',
+              background: 'var(--bg-card)',
               borderRadius: '12px',
               marginTop: '1rem',
               padding: '1rem',
+              border: '1px solid var(--border)',
             }}
             className="mobile-menu"
           >
@@ -197,7 +211,11 @@ export default function Navbar() {
                 style={{
                   display: 'block',
                   padding: '0.8rem 1rem',
-                  color: activeSection === link.href.slice(1) ? 'var(--accent)' : 'var(--text-secondary)',
+                  fontFamily: "'Oswald', sans-serif",
+                  letterSpacing: '1.5px',
+                  textTransform: 'uppercase',
+                  fontSize: '0.85rem',
+                  color: activeSection === link.href.slice(1) ? 'var(--gold)' : 'var(--text-secondary)',
                   fontWeight: activeSection === link.href.slice(1) ? 600 : 400,
                   borderRadius: '8px',
                   transition: 'all 0.3s ease',

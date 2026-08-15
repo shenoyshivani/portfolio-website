@@ -46,32 +46,44 @@ export default function Contact() {
     <section id="contact" style={{
       padding: '6rem 2rem',
       background: 'var(--bg-primary)',
+      position: 'relative',
     }}>
+      <div style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        height: '1px',
+        background: 'linear-gradient(90deg, transparent, var(--accent), var(--gold), var(--accent), transparent)',
+      }} />
+
       <div ref={ref} style={{ maxWidth: '1100px', margin: '0 auto' }}>
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8 }}
           style={{ textAlign: 'center', marginBottom: '4rem' }}
         >
           <p style={{
-            fontSize: '0.9rem',
-            color: 'var(--accent)',
-            fontWeight: 600,
-            letterSpacing: '2px',
+            fontFamily: "'Oswald', sans-serif",
+            fontSize: '0.8rem',
+            color: 'var(--gold)',
+            fontWeight: 500,
+            letterSpacing: '6px',
             textTransform: 'uppercase',
             marginBottom: '0.5rem',
           }}>
             Get In Touch
           </p>
           <h2 style={{
+            fontFamily: "'Cinzel', serif",
             fontSize: 'clamp(2rem, 4vw, 2.5rem)',
             fontWeight: 700,
-            fontFamily: "'Space Grotesk', sans-serif",
           }}>
             Contact <span style={{ color: 'var(--accent)' }}>Me</span>
           </h2>
           <p style={{
+            fontFamily: "'Inter', sans-serif",
             color: 'var(--text-secondary)',
             marginTop: '1rem',
             maxWidth: '500px',
@@ -90,11 +102,11 @@ export default function Contact() {
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
           >
             <div style={{
               background: 'var(--bg-card)',
-              borderRadius: '20px',
+              borderRadius: '4px',
               padding: '2rem',
               boxShadow: 'var(--shadow)',
               border: '1px solid var(--border)',
@@ -106,15 +118,15 @@ export default function Contact() {
                 position: 'absolute',
                 top: 0,
                 left: 0,
-                right: 0,
-                height: '3px',
+                width: '3px',
+                height: '100%',
                 background: 'var(--gradient)',
               }} />
 
               <h3 style={{
-                fontSize: '1.3rem',
+                fontFamily: "'Cinzel', serif",
+                fontSize: '1.2rem',
                 fontWeight: 700,
-                fontFamily: "'Space Grotesk', sans-serif",
                 marginBottom: '1.5rem',
               }}>
                 Let's Connect
@@ -139,27 +151,31 @@ export default function Contact() {
                     }}
                   >
                     <div style={{
-                      width: '45px',
-                      height: '45px',
-                      borderRadius: '12px',
-                      background: 'var(--accent-glow)',
+                      width: '40px',
+                      height: '40px',
+                      borderRadius: '4px',
+                      background: i % 2 === 0 ? 'rgba(155,26,26,0.15)' : 'rgba(196,164,80,0.15)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
                       flexShrink: 0,
                     }}>
-                      <info.icon style={{ color: 'var(--accent)', fontSize: '1.1rem' }} />
+                      <info.icon style={{ color: i % 2 === 0 ? 'var(--accent)' : 'var(--gold)', fontSize: '0.9rem' }} />
                     </div>
                     <div>
                       <p style={{
-                        fontSize: '0.8rem',
+                        fontFamily: "'Oswald', sans-serif",
+                        fontSize: '0.7rem',
                         color: 'var(--text-muted)',
                         marginBottom: '0.15rem',
+                        letterSpacing: '2px',
+                        textTransform: 'uppercase',
                       }}>
                         {info.label}
                       </p>
                       {info.href ? (
                         <a href={info.href} style={{
+                          fontFamily: "'Inter', sans-serif",
                           fontSize: '0.9rem',
                           color: 'var(--text-primary)',
                           fontWeight: 500,
@@ -169,6 +185,7 @@ export default function Contact() {
                         </a>
                       ) : (
                         <p style={{
+                          fontFamily: "'Inter', sans-serif",
                           fontSize: '0.9rem',
                           color: 'var(--text-primary)',
                           fontWeight: 500,
@@ -183,10 +200,10 @@ export default function Contact() {
 
               <div>
                 <p style={{
-                  fontSize: '0.9rem',
-                  fontWeight: 600,
+                  fontFamily: "'Cinzel', serif",
+                  fontSize: '0.85rem',
+                  fontWeight: 700,
                   marginBottom: '1rem',
-                  color: 'var(--text-primary)',
                 }}>
                   Follow Me
                 </p>
@@ -198,15 +215,15 @@ export default function Contact() {
                       target="_blank"
                       rel="noopener noreferrer"
                       style={{
-                        width: '45px',
-                        height: '45px',
-                        borderRadius: '12px',
+                        width: '40px',
+                        height: '40px',
+                        borderRadius: '4px',
                         border: '1px solid var(--border)',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        color: 'var(--text-secondary)',
-                        fontSize: '1.1rem',
+                        color: 'var(--text-muted)',
+                        fontSize: '1rem',
                         transition: 'all 0.3s ease',
                       }}
                       whileHover={{
@@ -228,11 +245,11 @@ export default function Contact() {
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
           >
             <form onSubmit={handleSubmit} style={{
               background: 'var(--bg-card)',
-              borderRadius: '20px',
+              borderRadius: '4px',
               padding: '2rem',
               boxShadow: 'var(--shadow)',
               border: '1px solid var(--border)',
@@ -243,9 +260,9 @@ export default function Contact() {
                 position: 'absolute',
                 top: 0,
                 left: 0,
-                right: 0,
-                height: '3px',
-                background: 'var(--gradient)',
+                width: '3px',
+                height: '100%',
+                background: 'var(--gradient-gold)',
               }} />
 
               <div style={{
@@ -257,10 +274,13 @@ export default function Contact() {
                 <div>
                   <label style={{
                     display: 'block',
-                    fontSize: '0.85rem',
+                    fontFamily: "'Oswald', sans-serif",
+                    fontSize: '0.75rem',
                     fontWeight: 500,
                     marginBottom: '0.5rem',
-                    color: 'var(--text-secondary)',
+                    color: 'var(--text-muted)',
+                    letterSpacing: '2px',
+                    textTransform: 'uppercase',
                   }}>
                     Name
                   </label>
@@ -274,9 +294,10 @@ export default function Contact() {
                       padding: '0.75rem 1rem',
                       background: 'var(--bg-secondary)',
                       border: '1px solid var(--border)',
-                      borderRadius: '10px',
+                      borderRadius: '4px',
                       color: 'var(--text-primary)',
-                      fontSize: '0.95rem',
+                      fontFamily: "'Inter', sans-serif",
+                      fontSize: '0.9rem',
                       outline: 'none',
                       transition: 'border-color 0.3s',
                     }}
@@ -288,10 +309,13 @@ export default function Contact() {
                 <div>
                   <label style={{
                     display: 'block',
-                    fontSize: '0.85rem',
+                    fontFamily: "'Oswald', sans-serif",
+                    fontSize: '0.75rem',
                     fontWeight: 500,
                     marginBottom: '0.5rem',
-                    color: 'var(--text-secondary)',
+                    color: 'var(--text-muted)',
+                    letterSpacing: '2px',
+                    textTransform: 'uppercase',
                   }}>
                     Email
                   </label>
@@ -305,9 +329,10 @@ export default function Contact() {
                       padding: '0.75rem 1rem',
                       background: 'var(--bg-secondary)',
                       border: '1px solid var(--border)',
-                      borderRadius: '10px',
+                      borderRadius: '4px',
                       color: 'var(--text-primary)',
-                      fontSize: '0.95rem',
+                      fontFamily: "'Inter', sans-serif",
+                      fontSize: '0.9rem',
                       outline: 'none',
                       transition: 'border-color 0.3s',
                     }}
@@ -321,10 +346,13 @@ export default function Contact() {
               <div style={{ marginBottom: '1rem' }}>
                 <label style={{
                   display: 'block',
-                  fontSize: '0.85rem',
+                  fontFamily: "'Oswald', sans-serif",
+                  fontSize: '0.75rem',
                   fontWeight: 500,
                   marginBottom: '0.5rem',
-                  color: 'var(--text-secondary)',
+                  color: 'var(--text-muted)',
+                  letterSpacing: '2px',
+                  textTransform: 'uppercase',
                 }}>
                   Subject
                 </label>
@@ -338,9 +366,10 @@ export default function Contact() {
                     padding: '0.75rem 1rem',
                     background: 'var(--bg-secondary)',
                     border: '1px solid var(--border)',
-                    borderRadius: '10px',
+                    borderRadius: '4px',
                     color: 'var(--text-primary)',
-                    fontSize: '0.95rem',
+                    fontFamily: "'Inter', sans-serif",
+                    fontSize: '0.9rem',
                     outline: 'none',
                     transition: 'border-color 0.3s',
                   }}
@@ -353,10 +382,13 @@ export default function Contact() {
               <div style={{ marginBottom: '1.5rem' }}>
                 <label style={{
                   display: 'block',
-                  fontSize: '0.85rem',
+                  fontFamily: "'Oswald', sans-serif",
+                  fontSize: '0.75rem',
                   fontWeight: 500,
                   marginBottom: '0.5rem',
-                  color: 'var(--text-secondary)',
+                  color: 'var(--text-muted)',
+                  letterSpacing: '2px',
+                  textTransform: 'uppercase',
                 }}>
                   Message
                 </label>
@@ -370,13 +402,13 @@ export default function Contact() {
                     padding: '0.75rem 1rem',
                     background: 'var(--bg-secondary)',
                     border: '1px solid var(--border)',
-                    borderRadius: '10px',
+                    borderRadius: '4px',
                     color: 'var(--text-primary)',
-                    fontSize: '0.95rem',
+                    fontFamily: "'Inter', sans-serif",
+                    fontSize: '0.9rem',
                     outline: 'none',
                     resize: 'vertical',
                     transition: 'border-color 0.3s',
-                    fontFamily: 'inherit',
                   }}
                   onFocus={(e) => e.target.style.borderColor = 'var(--accent)'}
                   onBlur={(e) => e.target.style.borderColor = 'var(--border)'}
@@ -390,13 +422,13 @@ export default function Contact() {
                   animate={{ opacity: 1, y: 0 }}
                   style={{
                     padding: '0.75rem 1rem',
-                    borderRadius: '10px',
+                    borderRadius: '4px',
                     marginBottom: '1rem',
                     fontSize: '0.9rem',
                     fontWeight: 500,
-                    background: status.type === 'success' ? '#10b98115' : '#ef444415',
-                    color: status.type === 'success' ? '#10b981' : '#ef4444',
-                    border: `1px solid ${status.type === 'success' ? '#10b98130' : '#ef444430'}`,
+                    background: status.type === 'success' ? 'rgba(34,197,94,0.1)' : 'rgba(239,68,68,0.1)',
+                    color: status.type === 'success' ? '#22c55e' : '#ef4444',
+                    border: `1px solid ${status.type === 'success' ? 'rgba(34,197,94,0.2)' : 'rgba(239,68,68,0.2)'}`,
                   }}
                 >
                   {status.message}
@@ -410,15 +442,18 @@ export default function Contact() {
                   width: '100%',
                   padding: '0.85rem',
                   background: isSubmitting ? 'var(--text-muted)' : 'var(--gradient)',
-                  color: 'white',
+                  color: '#e8e4dd',
                   border: 'none',
-                  borderRadius: '10px',
-                  fontSize: '1rem',
+                  borderRadius: '4px',
+                  fontFamily: "'Oswald', sans-serif",
+                  fontSize: '0.85rem',
                   fontWeight: 600,
+                  letterSpacing: '3px',
+                  textTransform: 'uppercase',
                   cursor: isSubmitting ? 'not-allowed' : 'pointer',
                   transition: 'all 0.3s ease',
                 }}
-                whileHover={!isSubmitting ? { scale: 1.02, boxShadow: '0 10px 30px var(--accent-glow)' } : {}}
+                whileHover={!isSubmitting ? { scale: 1.02, boxShadow: '0 10px 30px rgba(155,26,26,0.4)' } : {}}
                 whileTap={!isSubmitting ? { scale: 0.98 } : {}}
               >
                 {isSubmitting ? 'Sending...' : 'Send Message'}

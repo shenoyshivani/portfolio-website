@@ -46,28 +46,30 @@ export default function Skills() {
     <section id="skills" style={{
       padding: '6rem 2rem',
       background: 'var(--bg-primary)',
+      position: 'relative',
     }}>
       <div ref={ref} style={{ maxWidth: '1100px', margin: '0 auto' }}>
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8 }}
           style={{ textAlign: 'center', marginBottom: '4rem' }}
         >
           <p style={{
-            fontSize: '0.9rem',
-            color: 'var(--accent)',
-            fontWeight: 600,
-            letterSpacing: '2px',
+            fontFamily: "'Oswald', sans-serif",
+            fontSize: '0.8rem',
+            color: 'var(--gold)',
+            fontWeight: 500,
+            letterSpacing: '6px',
             textTransform: 'uppercase',
             marginBottom: '0.5rem',
           }}>
             What I Know
           </p>
           <h2 style={{
+            fontFamily: "'Cinzel', serif",
             fontSize: 'clamp(2rem, 4vw, 2.5rem)',
             fontWeight: 700,
-            fontFamily: "'Space Grotesk', sans-serif",
           }}>
             My <span style={{ color: 'var(--accent)' }}>Skills</span>
           </h2>
@@ -83,22 +85,23 @@ export default function Skills() {
               key={category.title}
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: catIndex * 0.15 }}
+              transition={{ duration: 0.6, delay: catIndex * 0.15 }}
               style={{
                 background: 'var(--bg-card)',
-                borderRadius: '20px',
+                borderRadius: '4px',
                 padding: '1.5rem',
                 boxShadow: 'var(--shadow)',
                 border: '1px solid var(--border)',
               }}
             >
               <h3 style={{
-                fontSize: '1.1rem',
-                fontWeight: 600,
-                color: 'var(--accent)',
+                fontFamily: "'Cinzel', serif",
+                fontSize: '1rem',
+                fontWeight: 700,
+                color: 'var(--gold)',
                 marginBottom: '1.5rem',
                 paddingBottom: '0.75rem',
-                borderBottom: '2px solid var(--border)',
+                borderBottom: '1px solid var(--border)',
               }}>
                 {category.title}
               </h3>
@@ -111,37 +114,40 @@ export default function Skills() {
                     marginBottom: '0.5rem',
                   }}>
                     <span style={{
-                      fontSize: '0.9rem',
-                      fontWeight: 500,
+                      fontFamily: "'Oswald', sans-serif",
+                      fontSize: '0.85rem',
+                      fontWeight: 400,
                       color: 'var(--text-primary)',
+                      letterSpacing: '0.5px',
                     }}>
                       {skill.name}
                     </span>
                     <span style={{
-                      fontSize: '0.8rem',
+                      fontFamily: "'Oswald', sans-serif",
+                      fontSize: '0.75rem',
                       color: 'var(--text-muted)',
                     }}>
                       {skill.level}%
                     </span>
                   </div>
                   <div style={{
-                    height: '6px',
+                    height: '4px',
                     background: 'var(--bg-secondary)',
-                    borderRadius: '3px',
+                    borderRadius: '2px',
                     overflow: 'hidden',
                   }}>
                     <motion.div
                       initial={{ width: 0 }}
                       animate={isInView ? { width: `${skill.level}%` } : { width: 0 }}
                       transition={{
-                        duration: 1,
+                        duration: 1.2,
                         delay: catIndex * 0.15 + skillIndex * 0.1,
-                        ease: 'easeOut',
+                        ease: [0.16, 1, 0.3, 1],
                       }}
                       style={{
                         height: '100%',
-                        background: 'var(--gradient)',
-                        borderRadius: '3px',
+                        background: skillIndex % 2 === 0 ? 'var(--gradient-red)' : 'var(--gradient-gold)',
+                        borderRadius: '2px',
                       }}
                     />
                   </div>

@@ -18,28 +18,40 @@ export default function About() {
     <section id="about" style={{
       padding: '6rem 2rem',
       background: 'var(--bg-secondary)',
+      position: 'relative',
     }}>
+      {/* Top border accent */}
+      <div style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        height: '1px',
+        background: 'linear-gradient(90deg, transparent, var(--accent), var(--gold), var(--accent), transparent)',
+      }} />
+
       <div ref={ref} style={{ maxWidth: '1100px', margin: '0 auto' }}>
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           style={{ textAlign: 'center', marginBottom: '4rem' }}
         >
           <p style={{
-            fontSize: '0.9rem',
-            color: 'var(--accent)',
-            fontWeight: 600,
-            letterSpacing: '2px',
+            fontFamily: "'Oswald', sans-serif",
+            fontSize: '0.8rem',
+            color: 'var(--gold)',
+            fontWeight: 500,
+            letterSpacing: '6px',
             textTransform: 'uppercase',
             marginBottom: '0.5rem',
           }}>
             Get To Know Me
           </p>
           <h2 style={{
+            fontFamily: "'Cinzel', serif",
             fontSize: 'clamp(2rem, 4vw, 2.5rem)',
             fontWeight: 700,
-            fontFamily: "'Space Grotesk', sans-serif",
           }}>
             About <span style={{ color: 'var(--accent)' }}>Me</span>
           </h2>
@@ -54,11 +66,11 @@ export default function About() {
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
           >
             <div style={{
               background: 'var(--bg-card)',
-              borderRadius: '20px',
+              borderRadius: '4px',
               padding: '2rem',
               boxShadow: 'var(--shadow)',
               border: '1px solid var(--border)',
@@ -69,15 +81,16 @@ export default function About() {
                 position: 'absolute',
                 top: 0,
                 left: 0,
-                right: 0,
-                height: '4px',
+                width: '3px',
+                height: '100%',
                 background: 'var(--gradient)',
               }} />
               <h3 style={{
-                fontSize: '1.3rem',
-                fontWeight: 600,
+                fontFamily: "'Cinzel', serif",
+                fontSize: '1.2rem',
+                fontWeight: 700,
                 marginBottom: '1rem',
-                color: 'var(--accent)',
+                color: 'var(--gold)',
               }}>
                 Who I Am
               </h3>
@@ -85,6 +98,7 @@ export default function About() {
                 color: 'var(--text-secondary)',
                 lineHeight: 1.8,
                 marginBottom: '1rem',
+                fontSize: '0.95rem',
               }}>
                 I'm a passionate Computer Science student at Thadomal Shahani Engineering College, Mumbai.
                 With a strong foundation in full-stack development and AI/ML, I love creating innovative
@@ -93,6 +107,7 @@ export default function About() {
               <p style={{
                 color: 'var(--text-secondary)',
                 lineHeight: 1.8,
+                fontSize: '0.95rem',
               }}>
                 From building AI-powered RAG assistants to fashion recommendation systems, I constantly
                 push myself to learn new technologies and take on challenging projects. When I'm not coding,
@@ -104,7 +119,7 @@ export default function About() {
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
             style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(2, 1fr)',
@@ -116,14 +131,16 @@ export default function About() {
                 key={stat.label}
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.4, delay: 0.5 + i * 0.1 }}
+                transition={{ duration: 0.5, delay: 0.5 + i * 0.1 }}
                 style={{
                   background: 'var(--bg-card)',
-                  borderRadius: '16px',
+                  borderRadius: '4px',
                   padding: '1.5rem',
                   textAlign: 'center',
                   boxShadow: 'var(--shadow)',
                   border: '1px solid var(--border)',
+                  position: 'relative',
+                  overflow: 'hidden',
                 }}
                 whileHover={{
                   scale: 1.05,
@@ -131,23 +148,34 @@ export default function About() {
                   transition: { duration: 0.2 },
                 }}
               >
+                <div style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  height: '2px',
+                  background: i % 2 === 0 ? 'var(--gradient-red)' : 'var(--gradient-gold)',
+                }} />
                 <stat.icon style={{
                   fontSize: '1.5rem',
-                  color: 'var(--accent)',
+                  color: i % 2 === 0 ? 'var(--accent)' : 'var(--gold)',
                   marginBottom: '0.5rem',
                 }} />
                 <div style={{
+                  fontFamily: "'Cinzel', serif",
                   fontSize: '1.8rem',
                   fontWeight: 700,
-                  fontFamily: "'Space Grotesk', sans-serif",
                   color: 'var(--text-primary)',
                 }}>
                   {stat.value}
                 </div>
                 <div style={{
-                  fontSize: '0.85rem',
+                  fontFamily: "'Oswald', sans-serif",
+                  fontSize: '0.75rem',
                   color: 'var(--text-muted)',
                   marginTop: '0.25rem',
+                  letterSpacing: '2px',
+                  textTransform: 'uppercase',
                 }}>
                   {stat.label}
                 </div>
