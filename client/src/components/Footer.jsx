@@ -2,14 +2,6 @@ import { motion } from 'framer-motion'
 import { FaHeart, FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa'
 import { HiArrowUp } from 'react-icons/hi'
 
-const WingsLogo = () => (
-  <svg viewBox="0 0 100 80" width="24" height="20" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M50 8 L15 45 L25 45 L50 20 L75 45 L85 45 Z" fill="var(--text-primary)" opacity="0.6"/>
-    <path d="M50 20 L30 50 L40 50 L50 35 L60 50 L70 50 Z" fill="var(--accent)" opacity="0.6"/>
-    <path d="M10 50 L50 75 L90 50 L75 55 L50 68 L25 55 Z" fill="var(--gold)" opacity="0.4"/>
-  </svg>
-)
-
 export default function Footer() {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -20,17 +12,7 @@ export default function Footer() {
       padding: '3rem 2rem 1.5rem',
       background: 'var(--bg-secondary)',
       borderTop: '1px solid var(--border)',
-      position: 'relative',
     }}>
-      <div style={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        height: '1px',
-        background: 'linear-gradient(90deg, transparent, var(--accent), var(--gold), var(--accent), transparent)',
-      }} />
-
       <div style={{
         maxWidth: '1100px',
         margin: '0 auto',
@@ -43,31 +25,27 @@ export default function Footer() {
           gap: '1.5rem',
           marginBottom: '2rem',
         }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-            <WingsLogo />
-            <div>
-              <h3 style={{
-                fontFamily: "'Cinzel Decorative', serif",
-                fontSize: '1.2rem',
-                fontWeight: 700,
-                color: 'var(--text-primary)',
-              }}>
-                Shivani Shenoy
-              </h3>
-              <p style={{
-                fontFamily: "'Oswald', sans-serif",
-                color: 'var(--text-muted)',
-                fontSize: '0.75rem',
-                marginTop: '0.25rem',
-                letterSpacing: '2px',
-                textTransform: 'uppercase',
-              }}>
-                Full Stack Developer | AI Enthusiast
-              </p>
-            </div>
+          <div>
+            <h3 style={{
+              fontSize: '1.5rem',
+              fontWeight: 700,
+              background: 'var(--gradient)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              fontFamily: "'Space Grotesk', sans-serif",
+            }}>
+              Shivani Shenoy
+            </h3>
+            <p style={{
+              color: 'var(--text-muted)',
+              fontSize: '0.9rem',
+              marginTop: '0.25rem',
+            }}>
+              Full Stack Developer | AI Enthusiast
+            </p>
           </div>
 
-          <div style={{ display: 'flex', gap: '0.75rem' }}>
+          <div style={{ display: 'flex', gap: '1rem' }}>
             {[
               { icon: FaLinkedin, href: 'https://www.linkedin.com/in/shivani-shenoy-593916300/' },
               { icon: FaGithub, href: 'https://github.com/shenoyshivani' },
@@ -79,14 +57,14 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
-                  width: 36,
-                  height: 36,
-                  borderRadius: '4px',
+                  width: 40,
+                  height: 40,
+                  borderRadius: '50%',
                   border: '1px solid var(--border)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  color: 'var(--text-muted)',
+                  color: 'var(--text-secondary)',
                   transition: 'all 0.3s ease',
                 }}
                 whileHover={{
@@ -111,33 +89,31 @@ export default function Footer() {
           borderTop: '1px solid var(--border)',
         }}>
           <p style={{
-            fontFamily: "'Oswald', sans-serif",
             color: 'var(--text-muted)',
-            fontSize: '0.75rem',
+            fontSize: '0.85rem',
             display: 'flex',
             alignItems: 'center',
             gap: '0.5rem',
-            letterSpacing: '1px',
           }}>
-            Made with <FaHeart style={{ color: 'var(--accent)', fontSize: '0.7rem' }} /> by Shivani Shenoy
+            Made with <FaHeart style={{ color: '#ef4444', fontSize: '0.8rem' }} /> by Shivani Shenoy
           </p>
 
           <motion.button
             onClick={scrollToTop}
             style={{
-              width: 36,
-              height: 36,
-              borderRadius: '4px',
+              width: 40,
+              height: 40,
+              borderRadius: '50%',
               background: 'var(--accent)',
               border: 'none',
-              color: '#e8e4dd',
-              fontSize: '1rem',
+              color: 'white',
+              fontSize: '1.2rem',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               cursor: 'pointer',
             }}
-            whileHover={{ scale: 1.1, y: -3, boxShadow: '0 5px 20px rgba(155,26,26,0.4)' }}
+            whileHover={{ scale: 1.1, y: -3 }}
             whileTap={{ scale: 0.9 }}
           >
             <HiArrowUp />

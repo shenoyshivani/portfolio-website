@@ -13,7 +13,6 @@ function App() {
   return (
     <ThemeProvider>
       <div className="app">
-        <div className="film-grain" />
         <Navbar />
         <Hero />
         <About />

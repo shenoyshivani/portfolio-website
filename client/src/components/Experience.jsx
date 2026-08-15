@@ -30,24 +30,23 @@ export default function Experience() {
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6 }}
           style={{ textAlign: 'center', marginBottom: '4rem' }}
         >
           <p style={{
-            fontFamily: "'Oswald', sans-serif",
-            fontSize: '0.8rem',
-            color: 'var(--gold)',
-            fontWeight: 500,
-            letterSpacing: '6px',
+            fontSize: '0.9rem',
+            color: 'var(--accent)',
+            fontWeight: 600,
+            letterSpacing: '2px',
             textTransform: 'uppercase',
             marginBottom: '0.5rem',
           }}>
             Where I've Worked
           </p>
           <h2 style={{
-            fontFamily: "'Cinzel', serif",
             fontSize: 'clamp(2rem, 4vw, 2.5rem)',
             fontWeight: 700,
+            fontFamily: "'Space Grotesk', sans-serif",
           }}>
             My <span style={{ color: 'var(--accent)' }}>Experience</span>
           </h2>
@@ -57,11 +56,11 @@ export default function Experience() {
           {/* Timeline line */}
           <div style={{
             position: 'absolute',
-            left: '20px',
+            left: '24px',
             top: 0,
             bottom: 0,
-            width: '1px',
-            background: 'linear-gradient(180deg, var(--accent), var(--gold), var(--accent))',
+            width: '2px',
+            background: 'var(--border)',
           }} />
 
           {experiences.map((exp, i) => (
@@ -69,28 +68,28 @@ export default function Experience() {
               key={exp.company}
               initial={{ opacity: 0, x: -50 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.8, delay: i * 0.2 }}
+              transition={{ duration: 0.6, delay: i * 0.2 }}
               style={{
                 position: 'relative',
-                paddingLeft: '55px',
+                paddingLeft: '60px',
                 marginBottom: '3rem',
               }}
             >
               {/* Timeline dot */}
               <div style={{
                 position: 'absolute',
-                left: '12px',
-                width: '18px',
-                height: '18px',
+                left: '14px',
+                width: '22px',
+                height: '22px',
                 borderRadius: '50%',
                 background: 'var(--accent)',
                 border: '3px solid var(--bg-primary)',
-                boxShadow: '0 0 0 2px var(--accent), 0 0 20px rgba(155,26,26,0.3)',
+                boxShadow: '0 0 0 3px var(--accent-glow)',
               }} />
 
               <div style={{
                 background: 'var(--bg-card)',
-                borderRadius: '4px',
+                borderRadius: '20px',
                 padding: '1.5rem',
                 boxShadow: 'var(--shadow)',
                 border: '1px solid var(--border)',
@@ -101,9 +100,9 @@ export default function Experience() {
                   position: 'absolute',
                   top: 0,
                   left: 0,
-                  width: '3px',
-                  height: '100%',
-                  background: 'var(--gradient-red)',
+                  right: 0,
+                  height: '3px',
+                  background: 'var(--gradient)',
                 }} />
 
                 <div style={{
@@ -112,44 +111,38 @@ export default function Experience() {
                   gap: '0.75rem',
                   marginBottom: '0.5rem',
                 }}>
-                  <HiBriefcase style={{ color: 'var(--accent)', fontSize: '1rem' }} />
+                  <HiBriefcase style={{ color: 'var(--accent)', fontSize: '1.2rem' }} />
                   <span style={{
-                    fontFamily: "'Oswald', sans-serif",
-                    fontSize: '0.8rem',
+                    fontSize: '0.85rem',
                     color: 'var(--text-muted)',
-                    fontWeight: 400,
-                    letterSpacing: '1px',
+                    fontWeight: 500,
                   }}>
                     {exp.period}
                   </span>
                 </div>
 
                 <h3 style={{
-                  fontFamily: "'Cinzel', serif",
-                  fontSize: '1.2rem',
+                  fontSize: '1.3rem',
                   fontWeight: 700,
+                  fontFamily: "'Space Grotesk', sans-serif",
                   marginBottom: '0.25rem',
                 }}>
                   {exp.role}
                 </h3>
 
                 <p style={{
-                  fontFamily: "'Oswald', sans-serif",
-                  fontSize: '0.9rem',
-                  fontWeight: 500,
-                  color: 'var(--gold)',
+                  fontSize: '1rem',
+                  fontWeight: 600,
+                  color: 'var(--accent)',
                   marginBottom: '0.25rem',
-                  letterSpacing: '0.5px',
                 }}>
-                  {exp.company} <span style={{ fontWeight: 300, color: 'var(--text-muted)' }}>| {exp.fullCompany}</span>
+                  {exp.company} <span style={{ fontWeight: 400, color: 'var(--text-muted)' }}>| {exp.fullCompany}</span>
                 </p>
 
                 <p style={{
-                  fontFamily: "'Oswald', sans-serif",
-                  fontSize: '0.8rem',
+                  fontSize: '0.85rem',
                   color: 'var(--text-muted)',
                   marginBottom: '1rem',
-                  letterSpacing: '0.5px',
                 }}>
                   {exp.location}
                 </p>
@@ -176,10 +169,10 @@ export default function Experience() {
                       }}
                     >
                       <span style={{
-                        minWidth: '4px',
-                        height: '4px',
+                        minWidth: '6px',
+                        height: '6px',
                         borderRadius: '50%',
-                        background: 'var(--gold)',
+                        background: 'var(--accent)',
                         marginTop: '8px',
                       }} />
                       {desc}

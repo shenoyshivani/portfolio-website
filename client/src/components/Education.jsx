@@ -34,39 +34,28 @@ export default function Education() {
     <section style={{
       padding: '6rem 2rem',
       background: 'var(--bg-secondary)',
-      position: 'relative',
     }}>
-      <div style={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        height: '1px',
-        background: 'linear-gradient(90deg, transparent, var(--accent), var(--gold), var(--accent), transparent)',
-      }} />
-
       <div ref={ref} style={{ maxWidth: '1100px', margin: '0 auto' }}>
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6 }}
           style={{ textAlign: 'center', marginBottom: '4rem' }}
         >
           <p style={{
-            fontFamily: "'Oswald', sans-serif",
-            fontSize: '0.8rem',
-            color: 'var(--gold)',
-            fontWeight: 500,
-            letterSpacing: '6px',
+            fontSize: '0.9rem',
+            color: 'var(--accent)',
+            fontWeight: 600,
+            letterSpacing: '2px',
             textTransform: 'uppercase',
             marginBottom: '0.5rem',
           }}>
             My Journey
           </p>
           <h2 style={{
-            fontFamily: "'Cinzel', serif",
             fontSize: 'clamp(2rem, 4vw, 2.5rem)',
             fontWeight: 700,
+            fontFamily: "'Space Grotesk', sans-serif",
           }}>
             Education & <span style={{ color: 'var(--accent)' }}>Certifications</span>
           </h2>
@@ -81,10 +70,10 @@ export default function Education() {
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
             style={{
               background: 'var(--bg-card)',
-              borderRadius: '4px',
+              borderRadius: '20px',
               padding: '2rem',
               boxShadow: 'var(--shadow)',
               border: '1px solid var(--border)',
@@ -96,9 +85,9 @@ export default function Education() {
               position: 'absolute',
               top: 0,
               left: 0,
-              width: '3px',
-              height: '100%',
-              background: 'var(--gradient-red)',
+              right: 0,
+              height: '3px',
+              background: 'var(--gradient)',
             }} />
 
             <div style={{
@@ -108,21 +97,21 @@ export default function Education() {
               marginBottom: '1.5rem',
             }}>
               <div style={{
-                width: '45px',
-                height: '45px',
-                borderRadius: '4px',
-                background: 'rgba(155,26,26,0.15)',
+                width: '50px',
+                height: '50px',
+                borderRadius: '12px',
+                background: 'var(--accent-glow)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
               }}>
-                <HiAcademicCap style={{ fontSize: '1.3rem', color: 'var(--accent)' }} />
+                <HiAcademicCap style={{ fontSize: '1.5rem', color: 'var(--accent)' }} />
               </div>
               <div>
                 <h3 style={{
-                  fontFamily: "'Cinzel', serif",
-                  fontSize: '1.1rem',
+                  fontSize: '1.2rem',
                   fontWeight: 700,
+                  fontFamily: "'Space Grotesk', sans-serif",
                 }}>
                   Education
                 </h3>
@@ -130,26 +119,22 @@ export default function Education() {
             </div>
 
             <h4 style={{
-              fontFamily: "'Cinzel', serif",
-              fontSize: '1rem',
+              fontSize: '1.1rem',
               fontWeight: 600,
               marginBottom: '0.25rem',
             }}>
               {education.degree}
             </h4>
             <p style={{
-              fontFamily: "'Oswald', sans-serif",
-              fontSize: '0.9rem',
+              fontSize: '1rem',
               fontWeight: 500,
-              color: 'var(--gold)',
+              color: 'var(--accent)',
               marginBottom: '0.25rem',
-              letterSpacing: '0.5px',
             }}>
               {education.college}
             </p>
             <p style={{
-              fontFamily: "'Oswald', sans-serif",
-              fontSize: '0.8rem',
+              fontSize: '0.85rem',
               color: 'var(--text-muted)',
               marginBottom: '0.75rem',
             }}>
@@ -161,24 +146,20 @@ export default function Education() {
               alignItems: 'center',
               gap: '0.5rem',
               padding: '0.5rem 1rem',
-              background: 'rgba(196,164,80,0.1)',
-              borderRadius: '4px',
+              background: 'var(--accent-glow)',
+              borderRadius: '8px',
               marginBottom: '1.5rem',
-              border: '1px solid rgba(196,164,80,0.2)',
             }}>
               <span style={{
-                fontFamily: "'Oswald', sans-serif",
-                fontSize: '0.8rem',
+                fontSize: '0.85rem',
                 color: 'var(--text-secondary)',
-                letterSpacing: '1px',
               }}>
                 CGPA:
               </span>
               <span style={{
-                fontFamily: "'Cinzel', serif",
-                fontSize: '1.1rem',
+                fontSize: '1.2rem',
                 fontWeight: 700,
-                color: 'var(--gold)',
+                color: 'var(--accent)',
               }}>
                 {education.cgpa}
               </span>
@@ -186,11 +167,10 @@ export default function Education() {
 
             <div>
               <p style={{
-                fontFamily: "'Cinzel', serif",
-                fontSize: '0.85rem',
-                fontWeight: 700,
+                fontSize: '0.9rem',
+                fontWeight: 600,
                 marginBottom: '0.75rem',
-                color: 'var(--gold)',
+                color: 'var(--text-primary)',
               }}>
                 Relevant Coursework
               </p>
@@ -201,14 +181,12 @@ export default function Education() {
               }}>
                 {education.courses.map(course => (
                   <span key={course} style={{
-                    padding: '0.3rem 0.75rem',
+                    padding: '0.35rem 0.75rem',
                     background: 'var(--bg-secondary)',
-                    borderRadius: '4px',
-                    fontFamily: "'Oswald', sans-serif",
-                    fontSize: '0.75rem',
+                    borderRadius: '20px',
+                    fontSize: '0.8rem',
                     color: 'var(--text-secondary)',
                     border: '1px solid var(--border)',
-                    letterSpacing: '0.5px',
                   }}>
                     {course}
                   </span>
@@ -221,10 +199,10 @@ export default function Education() {
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
             style={{
               background: 'var(--bg-card)',
-              borderRadius: '4px',
+              borderRadius: '20px',
               padding: '2rem',
               boxShadow: 'var(--shadow)',
               border: '1px solid var(--border)',
@@ -236,9 +214,9 @@ export default function Education() {
               position: 'absolute',
               top: 0,
               left: 0,
-              width: '3px',
-              height: '100%',
-              background: 'var(--gradient-gold)',
+              right: 0,
+              height: '3px',
+              background: 'var(--gradient)',
             }} />
 
             <div style={{
@@ -248,21 +226,21 @@ export default function Education() {
               marginBottom: '1.5rem',
             }}>
               <div style={{
-                width: '45px',
-                height: '45px',
-                borderRadius: '4px',
-                background: 'rgba(196,164,80,0.15)',
+                width: '50px',
+                height: '50px',
+                borderRadius: '12px',
+                background: 'var(--accent-glow)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
               }}>
-                <HiBadgeCheck style={{ fontSize: '1.3rem', color: 'var(--gold)' }} />
+                <HiBadgeCheck style={{ fontSize: '1.5rem', color: 'var(--accent)' }} />
               </div>
               <div>
                 <h3 style={{
-                  fontFamily: "'Cinzel', serif",
-                  fontSize: '1.1rem',
+                  fontSize: '1.2rem',
                   fontWeight: 700,
+                  fontFamily: "'Space Grotesk', sans-serif",
                 }}>
                   Certifications
                 </h3>
@@ -286,36 +264,33 @@ export default function Education() {
                   style={{
                     padding: '1rem',
                     background: 'var(--bg-secondary)',
-                    borderRadius: '4px',
+                    borderRadius: '12px',
                     border: '1px solid var(--border)',
                     display: 'block',
                     transition: 'all 0.3s ease',
                   }}
                   whileHover={{
-                    borderColor: 'var(--gold)',
+                    borderColor: 'var(--accent)',
                     scale: 1.02,
                   }}
                 >
                   <h4 style={{
-                    fontFamily: "'Cinzel', serif",
-                    fontSize: '0.95rem',
-                    fontWeight: 700,
+                    fontSize: '1rem',
+                    fontWeight: 600,
                     marginBottom: '0.25rem',
+                    color: 'var(--text-primary)',
                   }}>
                     {cert.name}
                   </h4>
                   <p style={{
-                    fontFamily: "'Oswald', sans-serif",
                     fontSize: '0.85rem',
-                    color: 'var(--gold)',
+                    color: 'var(--accent)',
                     fontWeight: 500,
-                    letterSpacing: '0.5px',
                   }}>
                     {cert.issuer}
                   </p>
                   <p style={{
-                    fontFamily: "'Oswald', sans-serif",
-                    fontSize: '0.75rem',
+                    fontSize: '0.8rem',
                     color: 'var(--text-muted)',
                     marginTop: '0.25rem',
                   }}>

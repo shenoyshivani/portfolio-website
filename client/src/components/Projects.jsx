@@ -1,6 +1,6 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
-import { FaExternalLinkAlt } from 'react-icons/fa'
+import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa'
 
 const projects = [
   {
@@ -15,6 +15,7 @@ const projects = [
     ],
     tech: ['Python', 'ChromaDB', 'Groq API', 'Streamlit', 'NLP'],
     demo: 'https://drive.google.com/file/d/11QNlvFkVBAeYQV1S7mjrd91xBT7-2qe4/view?usp=drive_link',
+    color: '#6c63ff',
   },
   {
     title: 'Fashion Recommendation System',
@@ -28,6 +29,7 @@ const projects = [
     ],
     tech: ['Python', 'TensorFlow', 'OpenCV', 'Streamlit', 'ML'],
     demo: 'https://drive.google.com/file/d/18J99ZH7ZFmMAcAsu1DnMzJge3poxfhPn/view?usp=drive_link',
+    color: '#48c6ef',
   },
 ]
 
@@ -40,39 +42,28 @@ export default function Projects() {
     <section id="projects" style={{
       padding: '6rem 2rem',
       background: 'var(--bg-secondary)',
-      position: 'relative',
     }}>
-      <div style={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        height: '1px',
-        background: 'linear-gradient(90deg, transparent, var(--accent), var(--gold), var(--accent), transparent)',
-      }} />
-
       <div ref={ref} style={{ maxWidth: '1100px', margin: '0 auto' }}>
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6 }}
           style={{ textAlign: 'center', marginBottom: '4rem' }}
         >
           <p style={{
-            fontFamily: "'Oswald', sans-serif",
-            fontSize: '0.8rem',
-            color: 'var(--gold)',
-            fontWeight: 500,
-            letterSpacing: '6px',
+            fontSize: '0.9rem',
+            color: 'var(--accent)',
+            fontWeight: 600,
+            letterSpacing: '2px',
             textTransform: 'uppercase',
             marginBottom: '0.5rem',
           }}>
             My Work
           </p>
           <h2 style={{
-            fontFamily: "'Cinzel', serif",
             fontSize: 'clamp(2rem, 4vw, 2.5rem)',
             fontWeight: 700,
+            fontFamily: "'Space Grotesk', sans-serif",
           }}>
             Featured <span style={{ color: 'var(--accent)' }}>Projects</span>
           </h2>
@@ -88,28 +79,30 @@ export default function Projects() {
               key={project.title}
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: i * 0.2 }}
+              transition={{ duration: 0.6, delay: i * 0.2 }}
               onMouseEnter={() => setHoveredProject(i)}
               onMouseLeave={() => setHoveredProject(null)}
               style={{
                 background: 'var(--bg-card)',
-                borderRadius: '4px',
+                borderRadius: '20px',
                 padding: '2rem',
                 boxShadow: 'var(--shadow)',
-                border: `1px solid ${hoveredProject === i ? 'var(--accent)' : 'var(--border)'}`,
+                border: `1px solid ${hoveredProject === i ? project.color : 'var(--border)'}`,
                 transition: 'all 0.3s ease',
                 position: 'relative',
                 overflow: 'hidden',
               }}
             >
-              {/* Left accent bar */}
               <div style={{
                 position: 'absolute',
                 top: 0,
                 left: 0,
-                width: '3px',
-                height: '100%',
-                background: i === 0 ? 'var(--gradient-red)' : 'var(--gradient-gold)',
+                right: 0,
+                height: '3px',
+                background: `linear-gradient(90deg, ${project.color}, ${project.color}88)`,
+                transform: `scaleX(${hoveredProject === i ? 1 : 0})`,
+                transformOrigin: 'left',
+                transition: 'transform 0.5s ease',
               }} />
 
               <div style={{
@@ -125,27 +118,24 @@ export default function Projects() {
                     marginBottom: '0.5rem',
                   }}>
                     <div style={{
-                      width: '8px',
-                      height: '8px',
+                      width: '12px',
+                      height: '12px',
                       borderRadius: '50%',
-                      background: i === 0 ? 'var(--accent)' : 'var(--gold)',
+                      background: project.color,
                     }} />
                     <span style={{
-                      fontFamily: "'Oswald', sans-serif",
-                      fontSize: '0.8rem',
+                      fontSize: '0.85rem',
                       color: 'var(--text-muted)',
-                      fontWeight: 400,
-                      letterSpacing: '2px',
-                      textTransform: 'uppercase',
+                      fontWeight: 500,
                     }}>
                       {project.subtitle}
                     </span>
                   </div>
 
                   <h3 style={{
-                    fontFamily: "'Cinzel', serif",
                     fontSize: '1.5rem',
                     fontWeight: 700,
+                    fontFamily: "'Space Grotesk', sans-serif",
                     marginBottom: '1rem',
                   }}>
                     {project.title}
@@ -155,29 +145,25 @@ export default function Projects() {
                     color: 'var(--text-secondary)',
                     lineHeight: 1.7,
                     marginBottom: '1.5rem',
-                    fontSize: '0.95rem',
                   }}>
                     {project.description}
                   </p>
 
                   <div style={{
                     display: 'flex',
-                    gap: '0.5rem',
+                    gap: '0.75rem',
                     flexWrap: 'wrap',
                     marginBottom: '1.5rem',
                   }}>
                     {project.tech.map(tech => (
                       <span key={tech} style={{
-                        padding: '0.3rem 0.75rem',
-                        background: i === 0 ? 'rgba(155,26,26,0.1)' : 'rgba(196,164,80,0.1)',
-                        color: i === 0 ? 'var(--accent)' : 'var(--gold)',
-                        borderRadius: '2px',
-                        fontFamily: "'Oswald', sans-serif",
-                        fontSize: '0.75rem',
-                        fontWeight: 400,
-                        letterSpacing: '1px',
-                        textTransform: 'uppercase',
-                        border: `1px solid ${i === 0 ? 'rgba(155,26,26,0.2)' : 'rgba(196,164,80,0.2)'}`,
+                        padding: '0.35rem 0.75rem',
+                        background: `${project.color}15`,
+                        color: project.color,
+                        borderRadius: '20px',
+                        fontSize: '0.8rem',
+                        fontWeight: 500,
+                        border: `1px solid ${project.color}30`,
                       }}>
                         {tech}
                       </span>
@@ -190,20 +176,17 @@ export default function Projects() {
                       target="_blank"
                       rel="noopener noreferrer"
                       style={{
-                        padding: '0.6rem 1.5rem',
-                        background: i === 0 ? 'var(--accent)' : 'var(--gold)',
-                        color: '#e8e4dd',
-                        borderRadius: '2px',
-                        fontFamily: "'Oswald', sans-serif",
-                        fontSize: '0.8rem',
+                        padding: '0.6rem 1.2rem',
+                        background: project.color,
+                        color: 'white',
+                        borderRadius: '8px',
+                        fontSize: '0.85rem',
                         fontWeight: 600,
-                        letterSpacing: '1.5px',
-                        textTransform: 'uppercase',
                         display: 'flex',
                         alignItems: 'center',
                         gap: '0.5rem',
                       }}
-                      whileHover={{ scale: 1.05, boxShadow: `0 5px 20px ${i === 0 ? 'rgba(155,26,26,0.4)' : 'rgba(196,164,80,0.4)'}` }}
+                      whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                     >
                       <FaExternalLinkAlt /> Live Demo
@@ -213,10 +196,9 @@ export default function Projects() {
 
                 <div>
                   <h4 style={{
-                    fontFamily: "'Cinzel', serif",
-                    fontSize: '0.9rem',
-                    fontWeight: 700,
-                    color: 'var(--gold)',
+                    fontSize: '0.95rem',
+                    fontWeight: 600,
+                    color: 'var(--text-primary)',
                     marginBottom: '1rem',
                   }}>
                     Key Features
@@ -243,10 +225,10 @@ export default function Projects() {
                         }}
                       >
                         <span style={{
-                          minWidth: '4px',
-                          height: '4px',
+                          minWidth: '6px',
+                          height: '6px',
                           borderRadius: '50%',
-                          background: i === 0 ? 'var(--accent)' : 'var(--gold)',
+                          background: project.color,
                           marginTop: '8px',
                         }} />
                         {feature}
