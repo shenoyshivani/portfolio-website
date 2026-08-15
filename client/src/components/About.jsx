@@ -8,10 +8,10 @@ export default function About() {
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   const stats = [
-    { label: 'Projects', value: '2+', icon: HiCode },
-    { label: 'CGPA', value: '8.49', icon: HiLightningBolt },
-    { label: 'Skills', value: '10+', icon: HiGlobe },
-    { label: 'Languages', value: '4', icon: HiUser },
+    { label: 'Projects', value: '2+', icon: HiCode, color: 'var(--color-1)' },
+    { label: 'CGPA', value: '8.49', icon: HiLightningBolt, color: 'var(--color-4)' },
+    { label: 'Skills', value: '10+', icon: HiGlobe, color: 'var(--color-3)' },
+    { label: 'Languages', value: '4', icon: HiUser, color: 'var(--color-2)' },
   ]
 
   return (
@@ -133,7 +133,7 @@ export default function About() {
               >
                 <stat.icon style={{
                   fontSize: '1.5rem',
-                  color: 'var(--accent)',
+                  color: stat.color,
                   marginBottom: '0.5rem',
                 }} />
                 <div style={{

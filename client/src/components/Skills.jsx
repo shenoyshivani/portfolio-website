@@ -4,6 +4,7 @@ import { useRef } from 'react'
 const skillCategories = [
   {
     title: 'Languages',
+    color: 'var(--color-1)',
     skills: [
       { name: 'Python', level: 90 },
       { name: 'C++', level: 75 },
@@ -12,6 +13,7 @@ const skillCategories = [
   },
   {
     title: 'Frameworks & Libraries',
+    color: 'var(--color-4)',
     skills: [
       { name: 'React.js', level: 85 },
       { name: 'Node.js', level: 80 },
@@ -22,6 +24,7 @@ const skillCategories = [
   },
   {
     title: 'Databases',
+    color: 'var(--color-3)',
     skills: [
       { name: 'MongoDB', level: 80 },
       { name: 'PostgreSQL', level: 75 },
@@ -29,6 +32,7 @@ const skillCategories = [
   },
   {
     title: 'Developer Tools',
+    color: 'var(--color-2)',
     skills: [
       { name: 'GitHub', level: 85 },
       { name: 'Postman', level: 80 },
@@ -95,10 +99,10 @@ export default function Skills() {
               <h3 style={{
                 fontSize: '1.1rem',
                 fontWeight: 600,
-                color: 'var(--accent)',
+                color: category.color,
                 marginBottom: '1.5rem',
                 paddingBottom: '0.75rem',
-                borderBottom: '2px solid var(--border)',
+                borderBottom: `2px solid ${category.color}30`,
               }}>
                 {category.title}
               </h3>
@@ -140,7 +144,7 @@ export default function Skills() {
                       }}
                       style={{
                         height: '100%',
-                        background: 'var(--gradient)',
+                        background: category.color,
                         borderRadius: '3px',
                       }}
                     />

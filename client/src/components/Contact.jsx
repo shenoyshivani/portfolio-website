@@ -30,10 +30,10 @@ export default function Contact() {
   }
 
   const contactInfo = [
-    { icon: FaEnvelope, label: 'Email', value: 'shivanishenoy17@gmail.com', href: 'mailto:shivanishenoy17@gmail.com' },
-    { icon: FaPhone, label: 'Phone', value: '+91 7058144485', href: 'tel:+917058144485' },
-    { icon: FaMapMarkerAlt, label: 'Location', value: 'Mumbai, Maharashtra', href: null },
-    { icon: FaLanguage, label: 'Languages', value: 'English, Marathi, Hindi, Konkani', href: null },
+    { icon: FaEnvelope, label: 'Email', value: 'shivanishenoy17@gmail.com', href: 'mailto:shivanishenoy17@gmail.com', color: 'var(--color-1)' },
+    { icon: FaPhone, label: 'Phone', value: '+91 7058144485', href: 'tel:+917058144485', color: 'var(--color-4)' },
+    { icon: FaMapMarkerAlt, label: 'Location', value: 'Mumbai, Maharashtra', href: null, color: 'var(--color-3)' },
+    { icon: FaLanguage, label: 'Languages', value: 'English, Marathi, Hindi, Konkani', href: null, color: 'var(--color-2)' },
   ]
 
   const socials = [
@@ -108,7 +108,7 @@ export default function Contact() {
                 left: 0,
                 right: 0,
                 height: '3px',
-                background: 'var(--gradient)',
+                background: 'var(--gradient-pink)',
               }} />
 
               <h3 style={{
@@ -142,13 +142,13 @@ export default function Contact() {
                       width: '45px',
                       height: '45px',
                       borderRadius: '12px',
-                      background: 'var(--accent-glow)',
+                      background: `${info.color}25`,
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
                       flexShrink: 0,
                     }}>
-                      <info.icon style={{ color: 'var(--accent)', fontSize: '1.1rem' }} />
+                      <info.icon style={{ color: info.color, fontSize: '1.1rem' }} />
                     </div>
                     <div>
                       <p style={{
@@ -245,7 +245,7 @@ export default function Contact() {
                 left: 0,
                 right: 0,
                 height: '3px',
-                background: 'var(--gradient)',
+                background: 'var(--gradient-blue)',
               }} />
 
               <div style={{

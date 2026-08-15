@@ -87,7 +87,7 @@ export default function Education() {
               left: 0,
               right: 0,
               height: '3px',
-              background: 'var(--gradient)',
+              background: 'var(--gradient-pink)',
             }} />
 
             <div style={{
@@ -100,12 +100,12 @@ export default function Education() {
                 width: '50px',
                 height: '50px',
                 borderRadius: '12px',
-                background: 'var(--accent-glow)',
+                background: 'var(--color-1)30',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
               }}>
-                <HiAcademicCap style={{ fontSize: '1.5rem', color: 'var(--accent)' }} />
+                <HiAcademicCap style={{ fontSize: '1.5rem', color: 'var(--color-1)' }} />
               </div>
               <div>
                 <h3 style={{
@@ -146,7 +146,7 @@ export default function Education() {
               alignItems: 'center',
               gap: '0.5rem',
               padding: '0.5rem 1rem',
-              background: 'var(--accent-glow)',
+              background: 'var(--color-4)20',
               borderRadius: '8px',
               marginBottom: '1.5rem',
             }}>
@@ -159,7 +159,7 @@ export default function Education() {
               <span style={{
                 fontSize: '1.2rem',
                 fontWeight: 700,
-                color: 'var(--accent)',
+                color: 'var(--color-4)',
               }}>
                 {education.cgpa}
               </span>
@@ -216,7 +216,7 @@ export default function Education() {
               left: 0,
               right: 0,
               height: '3px',
-              background: 'var(--gradient)',
+              background: 'var(--gradient-blue)',
             }} />
 
             <div style={{
@@ -229,12 +229,12 @@ export default function Education() {
                 width: '50px',
                 height: '50px',
                 borderRadius: '12px',
-                background: 'var(--accent-glow)',
+                background: 'var(--color-3)30',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
               }}>
-                <HiBadgeCheck style={{ fontSize: '1.5rem', color: 'var(--accent)' }} />
+                <HiBadgeCheck style={{ fontSize: '1.5rem', color: 'var(--color-3)' }} />
               </div>
               <div>
                 <h3 style={{

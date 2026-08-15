@@ -22,26 +22,33 @@ export default function Hero() {
         inset: 0,
         overflow: 'hidden',
       }}>
-        {[...Array(20)].map((_, i) => (
+        {[
+          { color: 'var(--color-1)', size: 400, x: '10%', y: '10%' },
+          { color: 'var(--color-2)', size: 350, x: '70%', y: '15%' },
+          { color: 'var(--color-3)', size: 300, x: '20%', y: '70%' },
+          { color: 'var(--color-4)', size: 250, x: '75%', y: '65%' },
+          { color: 'var(--color-1)', size: 200, x: '50%', y: '40%' },
+          { color: 'var(--color-3)', size: 180, x: '85%', y: '85%' },
+        ].map((blob, i) => (
           <motion.div
             key={i}
             style={{
               position: 'absolute',
-              width: Math.random() * 300 + 50,
-              height: Math.random() * 300 + 50,
+              width: blob.size,
+              height: blob.size,
               borderRadius: '50%',
-              background: `radial-gradient(circle, var(--accent-glow) 0%, transparent 70%)`,
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              opacity: 0.3,
+              background: `radial-gradient(circle, ${blob.color}40 0%, transparent 70%)`,
+              left: blob.x,
+              top: blob.y,
+              opacity: 0.5,
             }}
             animate={{
-              x: [0, Math.random() * 100 - 50],
-              y: [0, Math.random() * 100 - 50],
+              x: [0, (i % 2 === 0 ? 40 : -40)],
+              y: [0, (i % 2 === 0 ? -30 : 30)],
               scale: [1, 1.2, 1],
             }}
             transition={{
-              duration: Math.random() * 10 + 10,
+              duration: 8 + i * 2,
               repeat: Infinity,
               repeatType: 'reverse',
             }}
