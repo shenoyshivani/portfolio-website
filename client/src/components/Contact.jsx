@@ -1,6 +1,6 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
-import { FaLinkedin, FaGithub, FaEnvelope, FaPhone, FaMapMarkerAlt, FaLanguage } from 'react-icons/fa'
+import { FaLinkedin, FaGithub, FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa'
 import axios from 'axios'
 
 export default function Contact() {
@@ -14,7 +14,6 @@ export default function Contact() {
     e.preventDefault()
     setIsSubmitting(true)
     setStatus({ type: '', message: '' })
-
     try {
       const res = await axios.post('/api/contact', formData)
       setStatus({ type: 'success', message: res.data.message })
@@ -30,290 +29,203 @@ export default function Contact() {
   }
 
   const contactInfo = [
-    { icon: FaEnvelope, label: 'Email', value: 'shivanishenoy17@gmail.com', href: 'mailto:shivanishenoy17@gmail.com' },
-    { icon: FaPhone, label: 'Phone', value: '+91 7058144485', href: 'tel:+917058144485' },
-    { icon: FaMapMarkerAlt, label: 'Location', value: 'Mumbai, Maharashtra', href: null },
-    { icon: FaLanguage, label: 'Languages', value: 'English, Marathi, Hindi, Konkani', href: null },
+    { icon: FaEnvelope, value: 'shivanishenoy17@gmail.com', href: 'mailto:shivanishenoy17@gmail.com', color: 'var(--magenta)' },
+    { icon: FaPhone, value: '+91 7058144485', href: 'tel:+917058144485', color: 'var(--teal)' },
+    { icon: FaMapMarkerAlt, value: 'Mumbai, Maharashtra', href: null, color: 'var(--orange)' },
   ]
 
   const socials = [
-    { icon: FaLinkedin, href: 'https://www.linkedin.com/in/shivani-shenoy-593916300/', label: 'LinkedIn' },
-    { icon: FaGithub, href: 'https://github.com/shenoyshivani', label: 'GitHub' },
-    { icon: FaEnvelope, href: 'mailto:shivanishenoy17@gmail.com', label: 'Email' },
+    { icon: FaLinkedin, href: 'https://www.linkedin.com/in/shivani-shenoy-593916300/' },
+    { icon: FaGithub, href: 'https://github.com/shenoyshivani' },
+    { icon: FaEnvelope, href: 'mailto:shivanishenoy17@gmail.com' },
   ]
 
   return (
     <section id="contact" style={{
-      padding: '6rem 2rem',
-      background: 'var(--bg-primary)',
+      padding: '5rem 2rem',
+      background: 'var(--cream)',
     }}>
       <div ref={ref} style={{ maxWidth: '1100px', margin: '0 auto' }}>
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          style={{ textAlign: 'center', marginBottom: '4rem' }}
+          style={{ textAlign: 'center', marginBottom: '3.5rem' }}
         >
-          <p style={{
-            fontSize: '0.9rem',
-            color: 'var(--accent)',
-            fontWeight: 600,
-            letterSpacing: '2px',
-            textTransform: 'uppercase',
-            marginBottom: '0.5rem',
-          }}>
-            Get In Touch
-          </p>
           <h2 style={{
-            fontSize: 'clamp(2rem, 4vw, 2.5rem)',
+            fontFamily: 'var(--font-display)',
+            fontSize: 'clamp(2rem, 5vw, 3rem)',
             fontWeight: 700,
-            fontFamily: "'Space Grotesk', sans-serif",
+            color: 'var(--magenta)',
           }}>
-            Contact <span style={{ color: 'var(--accent)' }}>Me</span>
+            Let's Connect ✦
           </h2>
           <p style={{
-            color: 'var(--text-secondary)',
-            marginTop: '1rem',
-            maxWidth: '500px',
-            margin: '1rem auto 0',
+            fontFamily: 'var(--font-body)',
+            fontSize: '1.05rem',
+            color: '#666',
+            marginTop: '0.8rem',
           }}>
-            Have a question or want to work together? Feel free to reach out!
+            Have a question or want to work together? Reach out!
           </p>
         </motion.div>
 
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
+          gridTemplateColumns: '1fr 1.3fr',
           gap: '2rem',
-        }}>
+          alignItems: 'start',
+        }} className="contact-grid">
           {/* Contact Info */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -40 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
+            style={{
+              background: 'var(--teal)',
+              borderRadius: '24px',
+              padding: '2.5rem',
+              color: 'white',
+            }}
           >
-            <div style={{
-              background: 'var(--bg-card)',
-              borderRadius: '20px',
-              padding: '2rem',
-              boxShadow: 'var(--shadow)',
-              border: '1px solid var(--border)',
-              height: '100%',
-              position: 'relative',
-              overflow: 'hidden',
+            <h3 style={{
+              fontFamily: 'var(--font-display)',
+              fontSize: '1.5rem',
+              fontWeight: 700,
+              marginBottom: '1.5rem',
             }}>
-              <div style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                right: 0,
-                height: '3px',
-                background: 'var(--gradient)',
-              }} />
+              Get In Touch
+            </h3>
 
-              <h3 style={{
-                fontSize: '1.3rem',
-                fontWeight: 700,
-                fontFamily: "'Space Grotesk', sans-serif",
-                marginBottom: '1.5rem',
-              }}>
-                Let's Connect
-              </h3>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem', marginBottom: '2rem' }}>
+              {contactInfo.map((info, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ delay: 0.3 + i * 0.1 }}
+                  style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}
+                >
+                  <div style={{
+                    width: '40px',
+                    height: '40px',
+                    borderRadius: '12px',
+                    background: 'rgba(255,255,255,0.15)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexShrink: 0,
+                  }}>
+                    <info.icon style={{ fontSize: '1rem' }} />
+                  </div>
+                  {info.href ? (
+                    <a href={info.href} style={{ fontSize: '0.9rem', color: 'white', fontWeight: 500 }}>{info.value}</a>
+                  ) : (
+                    <span style={{ fontSize: '0.9rem', fontWeight: 500 }}>{info.value}</span>
+                  )}
+                </motion.div>
+              ))}
+            </div>
 
-              <div style={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '1.25rem',
-                marginBottom: '2rem',
-              }}>
-                {contactInfo.map((info, i) => (
-                  <motion.div
-                    key={info.label}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={isInView ? { opacity: 1, x: 0 } : {}}
-                    transition={{ delay: 0.3 + i * 0.1 }}
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '1rem',
-                    }}
-                  >
-                    <div style={{
-                      width: '45px',
-                      height: '45px',
-                      borderRadius: '12px',
-                      background: 'var(--accent-glow)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      flexShrink: 0,
-                    }}>
-                      <info.icon style={{ color: 'var(--accent)', fontSize: '1.1rem' }} />
-                    </div>
-                    <div>
-                      <p style={{
-                        fontSize: '0.8rem',
-                        color: 'var(--text-muted)',
-                        marginBottom: '0.15rem',
-                      }}>
-                        {info.label}
-                      </p>
-                      {info.href ? (
-                        <a href={info.href} style={{
-                          fontSize: '0.9rem',
-                          color: 'var(--text-primary)',
-                          fontWeight: 500,
-                          transition: 'color 0.3s',
-                        }}>
-                          {info.value}
-                        </a>
-                      ) : (
-                        <p style={{
-                          fontSize: '0.9rem',
-                          color: 'var(--text-primary)',
-                          fontWeight: 500,
-                        }}>
-                          {info.value}
-                        </p>
-                      )}
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-
-              <div>
-                <p style={{
-                  fontSize: '0.9rem',
-                  fontWeight: 600,
-                  marginBottom: '1rem',
-                  color: 'var(--text-primary)',
-                }}>
-                  Follow Me
-                </p>
-                <div style={{ display: 'flex', gap: '0.75rem' }}>
-                  {socials.map(({ icon: Icon, href, label }) => (
-                    <motion.a
-                      key={label}
-                      href={href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      style={{
-                        width: '45px',
-                        height: '45px',
-                        borderRadius: '12px',
-                        border: '1px solid var(--border)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        color: 'var(--text-secondary)',
-                        fontSize: '1.1rem',
-                        transition: 'all 0.3s ease',
-                      }}
-                      whileHover={{
-                        scale: 1.1,
-                        borderColor: 'var(--accent)',
-                        color: 'var(--accent)',
-                        y: -3,
-                      }}
-                    >
-                      <Icon />
-                    </motion.a>
-                  ))}
-                </div>
-              </div>
+            <div style={{ display: 'flex', gap: '0.6rem' }}>
+              {socials.map(({ icon: Icon, href }, i) => (
+                <motion.a
+                  key={i}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.15, y: -3 }}
+                  style={{
+                    width: '42px',
+                    height: '42px',
+                    borderRadius: '12px',
+                    background: 'rgba(255,255,255,0.15)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: 'white',
+                    fontSize: '1.1rem',
+                  }}
+                >
+                  <Icon />
+                </motion.a>
+              ))}
             </div>
           </motion.div>
 
           {/* Contact Form */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: 40 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
           >
             <form onSubmit={handleSubmit} style={{
-              background: 'var(--bg-card)',
-              borderRadius: '20px',
-              padding: '2rem',
-              boxShadow: 'var(--shadow)',
-              border: '1px solid var(--border)',
-              position: 'relative',
-              overflow: 'hidden',
+              background: 'var(--white)',
+              borderRadius: '24px',
+              padding: '2.5rem',
+              boxShadow: 'var(--shadow-card)',
             }}>
-              <div style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                right: 0,
-                height: '3px',
-                background: 'var(--gradient)',
-              }} />
-
-              <div style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-                gap: '1rem',
-                marginBottom: '1rem',
-              }}>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }} className="form-row">
                 <div>
                   <label style={{
                     display: 'block',
+                    fontFamily: 'var(--font-display)',
                     fontSize: '0.85rem',
-                    fontWeight: 500,
-                    marginBottom: '0.5rem',
-                    color: 'var(--text-secondary)',
-                  }}>
-                    Name
-                  </label>
+                    fontWeight: 600,
+                    color: '#1a1a1a',
+                    marginBottom: '0.4rem',
+                  }}>Name</label>
                   <input
                     type="text"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     required
+                    placeholder="Your Name"
                     style={{
                       width: '100%',
                       padding: '0.75rem 1rem',
-                      background: 'var(--bg-secondary)',
-                      border: '1px solid var(--border)',
-                      borderRadius: '10px',
-                      color: 'var(--text-primary)',
+                      background: 'var(--cream)',
+                      border: '2px solid transparent',
+                      borderRadius: '12px',
+                      color: '#1a1a1a',
                       fontSize: '0.95rem',
+                      fontFamily: 'var(--font-body)',
                       outline: 'none',
                       transition: 'border-color 0.3s',
                     }}
-                    onFocus={(e) => e.target.style.borderColor = 'var(--accent)'}
-                    onBlur={(e) => e.target.style.borderColor = 'var(--border)'}
-                    placeholder="Your Name"
+                    onFocus={(e) => e.target.style.borderColor = 'var(--magenta)'}
+                    onBlur={(e) => e.target.style.borderColor = 'transparent'}
                   />
                 </div>
                 <div>
                   <label style={{
                     display: 'block',
+                    fontFamily: 'var(--font-display)',
                     fontSize: '0.85rem',
-                    fontWeight: 500,
-                    marginBottom: '0.5rem',
-                    color: 'var(--text-secondary)',
-                  }}>
-                    Email
-                  </label>
+                    fontWeight: 600,
+                    color: '#1a1a1a',
+                    marginBottom: '0.4rem',
+                  }}>Email</label>
                   <input
                     type="email"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     required
+                    placeholder="your@email.com"
                     style={{
                       width: '100%',
                       padding: '0.75rem 1rem',
-                      background: 'var(--bg-secondary)',
-                      border: '1px solid var(--border)',
-                      borderRadius: '10px',
-                      color: 'var(--text-primary)',
+                      background: 'var(--cream)',
+                      border: '2px solid transparent',
+                      borderRadius: '12px',
+                      color: '#1a1a1a',
                       fontSize: '0.95rem',
+                      fontFamily: 'var(--font-body)',
                       outline: 'none',
                       transition: 'border-color 0.3s',
                     }}
-                    onFocus={(e) => e.target.style.borderColor = 'var(--accent)'}
-                    onBlur={(e) => e.target.style.borderColor = 'var(--border)'}
-                    placeholder="your@email.com"
+                    onFocus={(e) => e.target.style.borderColor = 'var(--magenta)'}
+                    onBlur={(e) => e.target.style.borderColor = 'transparent'}
                   />
                 </div>
               </div>
@@ -321,66 +233,65 @@ export default function Contact() {
               <div style={{ marginBottom: '1rem' }}>
                 <label style={{
                   display: 'block',
+                  fontFamily: 'var(--font-display)',
                   fontSize: '0.85rem',
-                  fontWeight: 500,
-                  marginBottom: '0.5rem',
-                  color: 'var(--text-secondary)',
-                }}>
-                  Subject
-                </label>
+                  fontWeight: 600,
+                  color: '#1a1a1a',
+                  marginBottom: '0.4rem',
+                }}>Subject</label>
                 <input
                   type="text"
                   value={formData.subject}
                   onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                   required
+                  placeholder="Subject"
                   style={{
                     width: '100%',
                     padding: '0.75rem 1rem',
-                    background: 'var(--bg-secondary)',
-                    border: '1px solid var(--border)',
-                    borderRadius: '10px',
-                    color: 'var(--text-primary)',
+                    background: 'var(--cream)',
+                    border: '2px solid transparent',
+                    borderRadius: '12px',
+                    color: '#1a1a1a',
                     fontSize: '0.95rem',
+                    fontFamily: 'var(--font-body)',
                     outline: 'none',
                     transition: 'border-color 0.3s',
                   }}
-                  onFocus={(e) => e.target.style.borderColor = 'var(--accent)'}
-                  onBlur={(e) => e.target.style.borderColor = 'var(--border)'}
-                  placeholder="Subject"
+                  onFocus={(e) => e.target.style.borderColor = 'var(--magenta)'}
+                  onBlur={(e) => e.target.style.borderColor = 'transparent'}
                 />
               </div>
 
               <div style={{ marginBottom: '1.5rem' }}>
                 <label style={{
                   display: 'block',
+                  fontFamily: 'var(--font-display)',
                   fontSize: '0.85rem',
-                  fontWeight: 500,
-                  marginBottom: '0.5rem',
-                  color: 'var(--text-secondary)',
-                }}>
-                  Message
-                </label>
+                  fontWeight: 600,
+                  color: '#1a1a1a',
+                  marginBottom: '0.4rem',
+                }}>Message</label>
                 <textarea
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   required
                   rows={5}
+                  placeholder="Your message..."
                   style={{
                     width: '100%',
                     padding: '0.75rem 1rem',
-                    background: 'var(--bg-secondary)',
-                    border: '1px solid var(--border)',
-                    borderRadius: '10px',
-                    color: 'var(--text-primary)',
+                    background: 'var(--cream)',
+                    border: '2px solid transparent',
+                    borderRadius: '12px',
+                    color: '#1a1a1a',
                     fontSize: '0.95rem',
+                    fontFamily: 'var(--font-body)',
                     outline: 'none',
                     resize: 'vertical',
                     transition: 'border-color 0.3s',
-                    fontFamily: 'inherit',
                   }}
-                  onFocus={(e) => e.target.style.borderColor = 'var(--accent)'}
-                  onBlur={(e) => e.target.style.borderColor = 'var(--border)'}
-                  placeholder="Your message..."
+                  onFocus={(e) => e.target.style.borderColor = 'var(--magenta)'}
+                  onBlur={(e) => e.target.style.borderColor = 'transparent'}
                 />
               </div>
 
@@ -390,13 +301,13 @@ export default function Contact() {
                   animate={{ opacity: 1, y: 0 }}
                   style={{
                     padding: '0.75rem 1rem',
-                    borderRadius: '10px',
+                    borderRadius: '12px',
                     marginBottom: '1rem',
+                    fontFamily: 'var(--font-body)',
                     fontSize: '0.9rem',
-                    fontWeight: 500,
-                    background: status.type === 'success' ? '#10b98115' : '#ef444415',
-                    color: status.type === 'success' ? '#10b981' : '#ef4444',
-                    border: `1px solid ${status.type === 'success' ? '#10b98130' : '#ef444430'}`,
+                    fontWeight: 600,
+                    background: status.type === 'success' ? 'rgba(34,139,34,0.1)' : 'rgba(255,69,0,0.1)',
+                    color: status.type === 'success' ? 'var(--green)' : 'var(--orange)',
                   }}
                 >
                   {status.message}
@@ -406,27 +317,31 @@ export default function Contact() {
               <motion.button
                 type="submit"
                 disabled={isSubmitting}
+                className="pill-btn"
                 style={{
                   width: '100%',
-                  padding: '0.85rem',
-                  background: isSubmitting ? 'var(--text-muted)' : 'var(--gradient)',
+                  justifyContent: 'center',
+                  background: isSubmitting ? '#ccc' : 'var(--magenta)',
                   color: 'white',
-                  border: 'none',
-                  borderRadius: '10px',
                   fontSize: '1rem',
-                  fontWeight: 600,
                   cursor: isSubmitting ? 'not-allowed' : 'pointer',
-                  transition: 'all 0.3s ease',
                 }}
-                whileHover={!isSubmitting ? { scale: 1.02, boxShadow: '0 10px 30px var(--accent-glow)' } : {}}
-                whileTap={!isSubmitting ? { scale: 0.98 } : {}}
+                whileHover={!isSubmitting ? { scale: 1.03 } : {}}
+                whileTap={!isSubmitting ? { scale: 0.97 } : {}}
               >
-                {isSubmitting ? 'Sending...' : 'Send Message'}
+                {isSubmitting ? 'Sending...' : 'Send Message ✦'}
               </motion.button>
             </form>
           </motion.div>
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .contact-grid { grid-template-columns: 1fr !important; }
+          .form-row { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
     </section>
   )
 }

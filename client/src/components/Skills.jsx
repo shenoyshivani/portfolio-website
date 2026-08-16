@@ -4,37 +4,27 @@ import { useRef } from 'react'
 const skillCategories = [
   {
     title: 'Languages',
-    skills: [
-      { name: 'Python', level: 90 },
-      { name: 'C++', level: 75 },
-      { name: 'JavaScript', level: 85 },
-    ],
+    skills: ['Python', 'C++', 'JavaScript'],
+    color: 'var(--magenta)',
+    emoji: '💻',
   },
   {
-    title: 'Frameworks & Libraries',
-    skills: [
-      { name: 'React.js', level: 85 },
-      { name: 'Node.js', level: 80 },
-      { name: 'Express.js', level: 80 },
-      { name: 'Streamlit', level: 85 },
-      { name: 'LangChain', level: 70 },
-    ],
+    title: 'Frameworks',
+    skills: ['React.js', 'Node.js', 'Express.js', 'Streamlit', 'LangChain'],
+    color: 'var(--teal)',
+    emoji: '⚡',
   },
   {
     title: 'Databases',
-    skills: [
-      { name: 'MongoDB', level: 80 },
-      { name: 'PostgreSQL', level: 75 },
-    ],
+    skills: ['MongoDB', 'PostgreSQL'],
+    color: 'var(--orange)',
+    emoji: '🗄️',
   },
   {
-    title: 'Developer Tools',
-    skills: [
-      { name: 'GitHub', level: 85 },
-      { name: 'Postman', level: 80 },
-      { name: 'REST APIs', level: 80 },
-      { name: 'JWT', level: 75 },
-    ],
+    title: 'Tools',
+    skills: ['GitHub', 'Postman', 'REST APIs', 'JWT'],
+    color: 'var(--green)',
+    emoji: '🛠️',
   },
 ]
 
@@ -44,113 +34,139 @@ export default function Skills() {
 
   return (
     <section id="skills" style={{
-      padding: '6rem 2rem',
-      background: 'var(--bg-primary)',
+      padding: '5rem 3rem',
+      background: 'var(--white)',
+      position: 'relative',
+      overflow: 'hidden',
     }}>
       <div ref={ref} style={{ maxWidth: '1100px', margin: '0 auto' }}>
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          style={{ textAlign: 'center', marginBottom: '4rem' }}
+          style={{ marginBottom: '3.5rem' }}
         >
-          <p style={{
-            fontSize: '0.9rem',
-            color: 'var(--accent)',
-            fontWeight: 600,
-            letterSpacing: '2px',
-            textTransform: 'uppercase',
-            marginBottom: '0.5rem',
-          }}>
-            What I Know
-          </p>
           <h2 style={{
-            fontSize: 'clamp(2rem, 4vw, 2.5rem)',
+            fontFamily: 'var(--font-display)',
+            fontSize: 'clamp(2rem, 5vw, 3rem)',
             fontWeight: 700,
-            fontFamily: "'Space Grotesk', sans-serif",
+            color: '#1a1a1a',
+            lineHeight: 1.1,
           }}>
-            My <span style={{ color: 'var(--accent)' }}>Skills</span>
+            What I Bring
+            <br />
+            <span style={{ color: 'var(--magenta)' }}>to the Table</span>
           </h2>
         </motion.div>
 
+        {/* Asymmetric collage layout */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-          gap: '2rem',
-        }}>
-          {skillCategories.map((category, catIndex) => (
-            <motion.div
-              key={category.title}
-              initial={{ opacity: 0, y: 50 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: catIndex * 0.15 }}
-              style={{
-                background: 'var(--bg-card)',
-                borderRadius: '20px',
-                padding: '1.5rem',
-                boxShadow: 'var(--shadow)',
-                border: '1px solid var(--border)',
-              }}
-            >
-              <h3 style={{
-                fontSize: '1.1rem',
-                fontWeight: 600,
-                color: 'var(--accent)',
-                marginBottom: '1.5rem',
-                paddingBottom: '0.75rem',
-                borderBottom: '2px solid var(--border)',
-              }}>
-                {category.title}
-              </h3>
+          gridTemplateColumns: '1fr 1.2fr 0.9fr',
+          gridTemplateRows: 'auto auto',
+          gap: '1.2rem',
+        }} className="collage-grid">
+          {skillCategories.map((cat, i) => {
+            const offsets = [
+              { gridColumn: '1 / 2', gridRow: '1 / 2', rotate: -2 },
+              { gridColumn: '2 / 3', gridRow: '1 / 3', rotate: 1 },
+              { gridColumn: '3 / 4', gridRow: '1 / 2', rotate: 3 },
+              { gridColumn: '1 / 2', gridRow: '2 / 3', rotate: 2 },
+            ]
+            const off = offsets[i]
 
-              {category.skills.map((skill, skillIndex) => (
-                <div key={skill.name} style={{ marginBottom: '1.2rem' }}>
-                  <div style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    marginBottom: '0.5rem',
+            return (
+              <motion.div
+                key={cat.title}
+                initial={{ opacity: 0, y: 30, rotate: off.rotate * 2 }}
+                animate={isInView ? { opacity: 1, y: 0, rotate: off.rotate } : {}}
+                transition={{ duration: 0.5, delay: i * 0.12 }}
+                whileHover={{ scale: 1.04, rotate: 0, boxShadow: '0 16px 48px rgba(0,0,0,0.1)' }}
+                style={{
+                  ...off,
+                  background: `color-mix(in srgb, ${cat.color} 8%, white)`,
+                  borderRadius: '20px',
+                  padding: '1.8rem',
+                  border: `2px solid color-mix(in srgb, ${cat.color} 20%, white)`,
+                  transition: 'box-shadow 0.3s ease',
+                  alignSelf: 'start',
+                }}
+              >
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.6rem',
+                  marginBottom: '1rem',
+                }}>
+                  <span style={{ fontSize: '1.5rem' }}>{cat.emoji}</span>
+                  <h3 style={{
+                    fontFamily: 'var(--font-display)',
+                    fontSize: '1.15rem',
+                    fontWeight: 700,
+                    color: cat.color,
                   }}>
-                    <span style={{
-                      fontSize: '0.9rem',
-                      fontWeight: 500,
-                      color: 'var(--text-primary)',
-                    }}>
-                      {skill.name}
-                    </span>
-                    <span style={{
-                      fontSize: '0.8rem',
-                      color: 'var(--text-muted)',
-                    }}>
-                      {skill.level}%
-                    </span>
-                  </div>
-                  <div style={{
-                    height: '6px',
-                    background: 'var(--bg-secondary)',
-                    borderRadius: '3px',
-                    overflow: 'hidden',
-                  }}>
-                    <motion.div
-                      initial={{ width: 0 }}
-                      animate={isInView ? { width: `${skill.level}%` } : { width: 0 }}
-                      transition={{
-                        duration: 1,
-                        delay: catIndex * 0.15 + skillIndex * 0.1,
-                        ease: 'easeOut',
-                      }}
-                      style={{
-                        height: '100%',
-                        background: 'var(--gradient)',
-                        borderRadius: '3px',
-                      }}
-                    />
-                  </div>
+                    {cat.title}
+                  </h3>
                 </div>
-              ))}
-            </motion.div>
-          ))}
+
+                <div style={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  gap: '0.5rem',
+                }}>
+                  {cat.skills.map(skill => (
+                    <span key={skill} style={{
+                      padding: '0.4rem 0.85rem',
+                      borderRadius: '50px',
+                      fontFamily: 'var(--font-body)',
+                      fontSize: '0.82rem',
+                      fontWeight: 600,
+                      background: cat.color,
+                      color: 'white',
+                    }}>
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+            )
+          })}
+
+          {/* Decorative solid color tile */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={isInView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ duration: 0.5, delay: 0.6 }}
+            style={{
+              gridColumn: '3 / 4',
+              gridRow: '2 / 3',
+              background: 'var(--chartreuse)',
+              borderRadius: '20px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: '3rem',
+              minHeight: '120px',
+              transform: 'rotate(-3deg)',
+            }}
+          >
+            ✨
+          </motion.div>
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 800px) {
+          .collage-grid {
+            grid-template-columns: 1fr !important;
+            grid-template-rows: auto !important;
+          }
+          .collage-grid > * {
+            grid-column: auto !important;
+            grid-row: auto !important;
+          }
+        }
+      `}</style>
     </section>
   )
 }

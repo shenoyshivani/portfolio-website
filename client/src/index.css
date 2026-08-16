@@ -5,36 +5,18 @@
 }
 
 :root {
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8f9fa;
-  --bg-card: #ffffff;
-  --text-primary: #1a1a2e;
-  --text-secondary: #4a4a6a;
-  --text-muted: #7a7a9a;
-  --accent: #6c63ff;
-  --accent-hover: #5a52d5;
-  --accent-glow: rgba(108, 99, 255, 0.3);
-  --border: #e8e8f0;
-  --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.12);
-  --gradient: linear-gradient(135deg, #6c63ff 0%, #48c6ef 100%);
-  --nav-bg: rgba(255, 255, 255, 0.9);
-}
-
-body.dark {
-  --bg-primary: #0a0a1a;
-  --bg-secondary: #12122a;
-  --bg-card: #1a1a35;
-  --text-primary: #e8e8f0;
-  --text-secondary: #b0b0cc;
-  --text-muted: #7a7a9a;
-  --accent: #7c73ff;
-  --accent-hover: #9189ff;
-  --accent-glow: rgba(124, 115, 255, 0.4);
-  --border: #2a2a4a;
-  --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.4);
-  --nav-bg: rgba(10, 10, 26, 0.9);
+  --pink: #FFB6C1;
+  --magenta: #FF1493;
+  --teal: #008080;
+  --chartreuse: #DFFF00;
+  --green: #228B22;
+  --orange: #FF4500;
+  --cream: #FFF8F0;
+  --dark-green: #0B3D0B;
+  --white: #FFFFFF;
+  --font-display: 'Fredoka', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.08);
 }
 
 html {
@@ -42,10 +24,9 @@ html {
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  background: var(--bg-primary);
-  color: var(--text-primary);
-  transition: background 0.3s ease, color 0.3s ease;
+  font-family: var(--font-body);
+  background: var(--cream);
+  color: #1a1a1a;
   overflow-x: hidden;
 }
 
@@ -59,23 +40,57 @@ a {
 }
 
 ::selection {
-  background: var(--accent);
+  background: var(--magenta);
   color: white;
 }
 
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg-secondary);
+  background: var(--cream);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--accent);
-  border-radius: 4px;
+  background: var(--magenta);
+  border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-hover);
+  background: var(--orange);
+}
+
+.sparkle {
+  color: var(--chartreuse);
+  font-size: 1.2rem;
+  user-select: none;
+}
+
+.pill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 2rem;
+  border-radius: 50px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pill-btn:hover {
+  transform: scale(1.05);
+}
+
+.pill-btn:active {
+  transform: scale(0.97);
+}
+
+.section-headline {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.1;
 }

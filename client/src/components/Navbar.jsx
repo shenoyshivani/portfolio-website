@@ -1,13 +1,11 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { HiMenu, HiX, HiSun, HiMoon } from 'react-icons/hi'
-import { useTheme } from '../context/ThemeContext'
+import { HiMenu, HiX, HiUser } from 'react-icons/hi'
 
 const navLinks = [
-  { name: 'Home', href: '#home' },
+  { name: 'Work', href: '#projects' },
   { name: 'About', href: '#about' },
   { name: 'Skills', href: '#skills' },
-  { name: 'Projects', href: '#projects' },
   { name: 'Experience', href: '#experience' },
   { name: 'Contact', href: '#contact' },
 ]
@@ -15,22 +13,9 @@ const navLinks = [
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const [activeSection, setActiveSection] = useState('home')
-  const { isDark, toggleTheme } = useTheme()
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50)
-
-      const sections = navLinks.map(link => link.href.slice(1))
-      for (const section of sections.reverse()) {
-        const el = document.getElementById(section)
-        if (el && el.getBoundingClientRect().top <= 150) {
-          setActiveSection(section)
-          break
-        }
-      }
-    }
+    const handleScroll = () => setScrolled(window.scrollY > 50)
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
@@ -46,15 +31,14 @@ export default function Navbar() {
         left: 0,
         right: 0,
         zIndex: 1000,
-        padding: '1rem 2rem',
-        background: scrolled ? 'var(--nav-bg)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(20px)' : 'none',
-        borderBottom: scrolled ? '1px solid var(--border)' : 'none',
-        transition: 'all 0.3s ease',
+        padding: '1rem 2.5rem',
+        background: scrolled ? 'rgba(255,182,193,0.92)' : 'transparent',
+        backdropFilter: scrolled ? 'blur(16px)' : 'none',
+        transition: 'background 0.3s ease',
       }}
     >
       <div style={{
-        maxWidth: '1200px',
+        maxWidth: '1300px',
         margin: '0 auto',
         display: 'flex',
         justifyContent: 'space-between',
@@ -63,105 +47,77 @@ export default function Navbar() {
         <motion.a
           href="#home"
           style={{
-            fontSize: '1.5rem',
+            fontFamily: 'var(--font-display)',
+            fontSize: '1.6rem',
             fontWeight: 700,
-            background: 'var(--gradient)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            fontFamily: "'Space Grotesk', sans-serif",
+            color: 'var(--magenta)',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.4rem',
           }}
-          whileHover={{ scale: 1.05 }}
+          whileHover={{ scale: 1.08, rotate: -2 }}
           whileTap={{ scale: 0.95 }}
         >
+          <span style={{ color: 'var(--chartreuse)', fontSize: '1.3rem' }}>✦</span>
           SS
         </motion.a>
 
-        {/* Desktop Nav */}
         <div style={{
           display: 'flex',
           alignItems: 'center',
-          gap: '2rem',
-        }}
-          className="desktop-nav"
-        >
+          gap: '2.5rem',
+        }} className="desktop-nav">
           {navLinks.map((link) => (
             <motion.a
               key={link.name}
               href={link.href}
               style={{
-                fontSize: '0.9rem',
-                fontWeight: activeSection === link.href.slice(1) ? 600 : 400,
-                color: activeSection === link.href.slice(1) ? 'var(--accent)' : 'var(--text-secondary)',
-                transition: 'color 0.3s ease',
-                position: 'relative',
+                fontFamily: 'var(--font-body)',
+                fontSize: '0.95rem',
+                fontWeight: 600,
+                color: '#1a1a1a',
+                letterSpacing: '0.5px',
               }}
-              whileHover={{ color: 'var(--accent)' }}
+              whileHover={{ color: '#FF1493', y: -2 }}
             >
               {link.name}
-              {activeSection === link.href.slice(1) && (
-                <motion.div
-                  layoutId="activeNav"
-                  style={{
-                    position: 'absolute',
-                    bottom: -4,
-                    left: 0,
-                    right: 0,
-                    height: 2,
-                    background: 'var(--accent)',
-                    borderRadius: 1,
-                  }}
-                />
-              )}
             </motion.a>
           ))}
-
-          <motion.button
-            onClick={toggleTheme}
+          <motion.a
+            href="#contact"
             style={{
-              background: 'var(--bg-card)',
-              border: '1px solid var(--border)',
-              borderRadius: '50%',
               width: 40,
               height: 40,
+              borderRadius: '50%',
+              background: 'var(--magenta)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: 'white',
+              fontSize: '1.1rem',
+            }}
+            whileHover={{ scale: 1.15, rotate: 10 }}
+            whileTap={{ scale: 0.9 }}
+          >
+            <HiUser />
+          </motion.a>
+        </div>
+
+        <div className="mobile-menu-btn" style={{ display: 'none' }}>
+          <motion.button
+            onClick={() => setIsOpen(!isOpen)}
+            style={{
+              background: 'var(--magenta)',
+              border: 'none',
+              borderRadius: '12px',
+              width: 44,
+              height: 44,
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               cursor: 'pointer',
-              color: 'var(--text-primary)',
-              fontSize: '1.2rem',
-            }}
-            whileHover={{ scale: 1.1, rotate: 180 }}
-            whileTap={{ scale: 0.9 }}
-            transition={{ duration: 0.3 }}
-          >
-            {isDark ? <HiSun /> : <HiMoon />}
-          </motion.button>
-        </div>
-
-        {/* Mobile Menu Button */}
-        <div className="mobile-menu-btn" style={{ display: 'none' }}>
-          <motion.button
-            onClick={toggleTheme}
-            style={{
-              background: 'none',
-              border: 'none',
-              cursor: 'pointer',
-              color: 'var(--text-primary)',
+              color: 'white',
               fontSize: '1.3rem',
-              marginRight: '0.5rem',
-            }}
-            whileTap={{ scale: 0.9 }}
-          >
-            {isDark ? <HiSun /> : <HiMoon />}
-          </motion.button>
-          <motion.button
-            onClick={() => setIsOpen(!isOpen)}
-            style={{
-              background: 'none',
-              border: 'none',
-              cursor: 'pointer',
-              color: 'var(--text-primary)',
-              fontSize: '1.5rem',
             }}
             whileTap={{ scale: 0.9 }}
           >
@@ -170,7 +126,6 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -179,8 +134,8 @@ export default function Navbar() {
             exit={{ opacity: 0, height: 0 }}
             style={{
               overflow: 'hidden',
-              background: 'var(--bg-secondary)',
-              borderRadius: '12px',
+              background: 'var(--pink)',
+              borderRadius: '16px',
               marginTop: '1rem',
               padding: '1rem',
             }}
@@ -192,15 +147,16 @@ export default function Navbar() {
                 href={link.href}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * 0.1 }}
+                transition={{ delay: i * 0.07 }}
                 onClick={() => setIsOpen(false)}
                 style={{
                   display: 'block',
-                  padding: '0.8rem 1rem',
-                  color: activeSection === link.href.slice(1) ? 'var(--accent)' : 'var(--text-secondary)',
-                  fontWeight: activeSection === link.href.slice(1) ? 600 : 400,
-                  borderRadius: '8px',
-                  transition: 'all 0.3s ease',
+                  padding: '0.9rem 1.2rem',
+                  fontFamily: 'var(--font-display)',
+                  fontWeight: 600,
+                  fontSize: '1.1rem',
+                  color: '#1a1a1a',
+                  borderRadius: '12px',
                 }}
               >
                 {link.name}

@@ -1,82 +1,74 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { HiAcademicCap, HiBadgeCheck } from 'react-icons/hi'
+
+const education = {
+  college: 'Thadomal Shahani Engineering College',
+  location: 'Mumbai, Maharashtra',
+  degree: 'B.E. in Computer Science and Engineering',
+  cgpa: '8.49',
+  period: 'Aug 2023 - Present',
+  courses: ['Computer Networks', 'DBMS', 'Operating System', 'OOP'],
+}
+
+const certifications = [
+  {
+    name: 'Full Stack Development',
+    issuer: 'Udemy',
+    period: 'Jun 2024 - Jan 2025',
+    link: 'https://drive.google.com/file/d/12GaihxqcmUPmU7I5CPlA3kQv0-f5izzy/view?usp=sharing',
+    color: 'var(--magenta)',
+  },
+  {
+    name: 'Simple Games Using Python',
+    issuer: 'Udemy',
+    period: 'Feb 2025',
+    link: 'https://drive.google.com/file/d/1sNJVEpaBy74FQ57jvYHeQqmS2bwPAGMa/view?usp=sharing',
+    color: 'var(--teal)',
+  },
+]
 
 export default function Education() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
-  const education = {
-    college: 'Thadomal Shahani Engineering College',
-    location: 'Mumbai, Maharashtra',
-    degree: 'B.E. in Computer Science and Engineering',
-    cgpa: '8.49',
-    period: 'Aug 2023 - Present',
-    courses: ['Computer Networks', 'Database Management Systems', 'Operating System', 'Object Oriented Programming'],
-  }
-
-  const certifications = [
-    {
-      name: 'Full Stack Development',
-      issuer: 'Udemy',
-      period: 'Jun 2024 - Jan 2025',
-      link: 'https://drive.google.com/file/d/12GaihxqcmUPmU7I5CPlA3kQv0-f5izzy/view?usp=sharing',
-    },
-    {
-      name: 'Simple Games Using Python',
-      issuer: 'Udemy',
-      period: 'Feb 2025',
-      link: 'https://drive.google.com/file/d/1sNJVEpaBy74FQ57jvYHeQqmS2bwPAGMa/view?usp=sharing',
-    },
-  ]
-
   return (
     <section style={{
-      padding: '6rem 2rem',
-      background: 'var(--bg-secondary)',
+      padding: '5rem 2rem',
+      background: 'var(--white)',
     }}>
       <div ref={ref} style={{ maxWidth: '1100px', margin: '0 auto' }}>
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          style={{ textAlign: 'center', marginBottom: '4rem' }}
+          style={{ textAlign: 'center', marginBottom: '3.5rem' }}
         >
-          <p style={{
-            fontSize: '0.9rem',
-            color: 'var(--accent)',
-            fontWeight: 600,
-            letterSpacing: '2px',
-            textTransform: 'uppercase',
-            marginBottom: '0.5rem',
-          }}>
-            My Journey
-          </p>
           <h2 style={{
-            fontSize: 'clamp(2rem, 4vw, 2.5rem)',
+            fontFamily: 'var(--font-display)',
+            fontSize: 'clamp(2rem, 5vw, 3rem)',
             fontWeight: 700,
-            fontFamily: "'Space Grotesk', sans-serif",
+            color: 'var(--orange)',
           }}>
-            Education & <span style={{ color: 'var(--accent)' }}>Certifications</span>
+            Education & Certs ✦
           </h2>
         </motion.div>
 
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
-          gap: '2rem',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+          gap: '1.5rem',
         }}>
           {/* Education Card */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -40 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
+            whileHover={{ y: -6 }}
             style={{
-              background: 'var(--bg-card)',
+              background: 'var(--cream)',
               borderRadius: '20px',
               padding: '2rem',
-              boxShadow: 'var(--shadow)',
-              border: '1px solid var(--border)',
+              boxShadow: 'var(--shadow-card)',
               position: 'relative',
               overflow: 'hidden',
             }}
@@ -86,59 +78,47 @@ export default function Education() {
               top: 0,
               left: 0,
               right: 0,
-              height: '3px',
-              background: 'var(--gradient)',
+              height: '4px',
+              background: 'var(--orange)',
             }} />
 
-            <div style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.75rem',
-              marginBottom: '1.5rem',
+            <span style={{ fontSize: '2.5rem', display: 'block', marginBottom: '1rem' }}>🎓</span>
+
+            <h3 style={{
+              fontFamily: 'var(--font-display)',
+              fontSize: '1.2rem',
+              fontWeight: 700,
+              color: '#1a1a1a',
+              marginBottom: '0.3rem',
             }}>
-              <div style={{
-                width: '50px',
-                height: '50px',
-                borderRadius: '12px',
-                background: 'var(--accent-glow)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}>
-                <HiAcademicCap style={{ fontSize: '1.5rem', color: 'var(--accent)' }} />
-              </div>
-              <div>
-                <h3 style={{
-                  fontSize: '1.2rem',
-                  fontWeight: 700,
-                  fontFamily: "'Space Grotesk', sans-serif",
-                }}>
-                  Education
-                </h3>
-              </div>
-            </div>
+              Education
+            </h3>
 
             <h4 style={{
-              fontSize: '1.1rem',
+              fontFamily: 'var(--font-body)',
+              fontSize: '1rem',
               fontWeight: 600,
-              marginBottom: '0.25rem',
+              color: '#1a1a1a',
+              marginBottom: '0.2rem',
             }}>
               {education.degree}
             </h4>
             <p style={{
-              fontSize: '1rem',
-              fontWeight: 500,
-              color: 'var(--accent)',
-              marginBottom: '0.25rem',
+              fontFamily: 'var(--font-body)',
+              fontSize: '0.85rem',
+              color: 'var(--orange)',
+              fontWeight: 600,
+              marginBottom: '0.2rem',
             }}>
               {education.college}
             </p>
             <p style={{
-              fontSize: '0.85rem',
-              color: 'var(--text-muted)',
-              marginBottom: '0.75rem',
+              fontFamily: 'var(--font-body)',
+              fontSize: '0.8rem',
+              color: '#999',
+              marginBottom: '1rem',
             }}>
-              {education.location} | {education.period}
+              {education.location} · {education.period}
             </p>
 
             <div style={{
@@ -146,158 +126,121 @@ export default function Education() {
               alignItems: 'center',
               gap: '0.5rem',
               padding: '0.5rem 1rem',
-              background: 'var(--accent-glow)',
-              borderRadius: '8px',
-              marginBottom: '1.5rem',
+              background: 'rgba(255,69,0,0.08)',
+              borderRadius: '12px',
+              marginBottom: '1.2rem',
             }}>
               <span style={{
+                fontFamily: 'var(--font-body)',
                 fontSize: '0.85rem',
-                color: 'var(--text-secondary)',
-              }}>
-                CGPA:
-              </span>
+                color: '#666',
+              }}>CGPA:</span>
               <span style={{
-                fontSize: '1.2rem',
+                fontFamily: 'var(--font-display)',
+                fontSize: '1.3rem',
                 fontWeight: 700,
-                color: 'var(--accent)',
-              }}>
-                {education.cgpa}
-              </span>
+                color: 'var(--orange)',
+              }}>{education.cgpa}</span>
             </div>
 
             <div>
               <p style={{
+                fontFamily: 'var(--font-display)',
                 fontSize: '0.9rem',
                 fontWeight: 600,
-                marginBottom: '0.75rem',
-                color: 'var(--text-primary)',
-              }}>
-                Relevant Coursework
-              </p>
-              <div style={{
-                display: 'flex',
-                flexWrap: 'wrap',
-                gap: '0.5rem',
-              }}>
-                {education.courses.map(course => (
-                  <span key={course} style={{
-                    padding: '0.35rem 0.75rem',
-                    background: 'var(--bg-secondary)',
-                    borderRadius: '20px',
-                    fontSize: '0.8rem',
-                    color: 'var(--text-secondary)',
-                    border: '1px solid var(--border)',
-                  }}>
-                    {course}
-                  </span>
+                color: '#1a1a1a',
+                marginBottom: '0.6rem',
+              }}>Coursework</p>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
+                {education.courses.map(c => (
+                  <span key={c} style={{
+                    padding: '0.3rem 0.7rem',
+                    borderRadius: '50px',
+                    fontFamily: 'var(--font-body)',
+                    fontSize: '0.75rem',
+                    fontWeight: 600,
+                    background: 'var(--white)',
+                    color: 'var(--orange)',
+                    border: '1px solid rgba(255,69,0,0.2)',
+                  }}>{c}</span>
                 ))}
               </div>
             </div>
           </motion.div>
 
-          {/* Certifications Card */}
+          {/* Certifications */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: 40 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            style={{
-              background: 'var(--bg-card)',
-              borderRadius: '20px',
-              padding: '2rem',
-              boxShadow: 'var(--shadow)',
-              border: '1px solid var(--border)',
-              position: 'relative',
-              overflow: 'hidden',
-            }}
+            transition={{ duration: 0.6, delay: 0.3 }}
           >
             <div style={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              right: 0,
-              height: '3px',
-              background: 'var(--gradient)',
-            }} />
-
-            <div style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.75rem',
-              marginBottom: '1.5rem',
+              background: 'var(--cream)',
+              borderRadius: '20px',
+              padding: '2rem',
+              boxShadow: 'var(--shadow-card)',
+              position: 'relative',
+              overflow: 'hidden',
             }}>
               <div style={{
-                width: '50px',
-                height: '50px',
-                borderRadius: '12px',
-                background: 'var(--accent-glow)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}>
-                <HiBadgeCheck style={{ fontSize: '1.5rem', color: 'var(--accent)' }} />
-              </div>
-              <div>
-                <h3 style={{
-                  fontSize: '1.2rem',
-                  fontWeight: 700,
-                  fontFamily: "'Space Grotesk', sans-serif",
-                }}>
-                  Certifications
-                </h3>
-              </div>
-            </div>
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                height: '4px',
+                background: 'var(--teal)',
+              }} />
 
-            <div style={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '1rem',
-            }}>
-              {certifications.map((cert, i) => (
-                <motion.a
-                  key={cert.name}
-                  href={cert.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ delay: 0.5 + i * 0.1 }}
-                  style={{
-                    padding: '1rem',
-                    background: 'var(--bg-secondary)',
-                    borderRadius: '12px',
-                    border: '1px solid var(--border)',
-                    display: 'block',
-                    transition: 'all 0.3s ease',
-                  }}
-                  whileHover={{
-                    borderColor: 'var(--accent)',
-                    scale: 1.02,
-                  }}
-                >
-                  <h4 style={{
-                    fontSize: '1rem',
-                    fontWeight: 600,
-                    marginBottom: '0.25rem',
-                    color: 'var(--text-primary)',
-                  }}>
-                    {cert.name}
-                  </h4>
-                  <p style={{
-                    fontSize: '0.85rem',
-                    color: 'var(--accent)',
-                    fontWeight: 500,
-                  }}>
-                    {cert.issuer}
-                  </p>
-                  <p style={{
-                    fontSize: '0.8rem',
-                    color: 'var(--text-muted)',
-                    marginTop: '0.25rem',
-                  }}>
-                    {cert.period}
-                  </p>
-                </motion.a>
-              ))}
+              <span style={{ fontSize: '2.5rem', display: 'block', marginBottom: '1rem' }}>📜</span>
+
+              <h3 style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: '1.2rem',
+                fontWeight: 700,
+                color: '#1a1a1a',
+                marginBottom: '1.2rem',
+              }}>
+                Certifications
+              </h3>
+
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem' }}>
+                {certifications.map((cert, i) => (
+                  <motion.a
+                    key={cert.name}
+                    href={cert.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.02, x: 4 }}
+                    style={{
+                      padding: '1rem',
+                      background: 'var(--white)',
+                      borderRadius: '14px',
+                      display: 'block',
+                      borderLeft: `4px solid ${cert.color}`,
+                    }}
+                  >
+                    <h4 style={{
+                      fontFamily: 'var(--font-display)',
+                      fontSize: '1rem',
+                      fontWeight: 600,
+                      color: '#1a1a1a',
+                      marginBottom: '0.2rem',
+                    }}>{cert.name}</h4>
+                    <p style={{
+                      fontFamily: 'var(--font-body)',
+                      fontSize: '0.85rem',
+                      color: cert.color,
+                      fontWeight: 600,
+                    }}>{cert.issuer}</p>
+                    <p style={{
+                      fontFamily: 'var(--font-body)',
+                      fontSize: '0.75rem',
+                      color: '#999',
+                      marginTop: '0.15rem',
+                    }}>{cert.period}</p>
+                  </motion.a>
+                ))}
+              </div>
             </div>
           </motion.div>
         </div>

@@ -1,6 +1,5 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { HiBriefcase } from 'react-icons/hi'
 
 const experiences = [
   {
@@ -14,6 +13,7 @@ const experiences = [
       'Led digital communication efforts, ensuring consistent branding and timely content delivery.',
       'Organized and supported major college events including fests, convocation and flagship events as a part of the core team.',
     ],
+    color: 'var(--magenta)',
   },
 ]
 
@@ -23,163 +23,150 @@ export default function Experience() {
 
   return (
     <section id="experience" style={{
-      padding: '6rem 2rem',
-      background: 'var(--bg-primary)',
+      padding: '5rem 2rem',
+      background: 'var(--cream)',
     }}>
       <div ref={ref} style={{ maxWidth: '800px', margin: '0 auto' }}>
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          style={{ textAlign: 'center', marginBottom: '4rem' }}
+          style={{ textAlign: 'center', marginBottom: '3.5rem' }}
         >
-          <p style={{
-            fontSize: '0.9rem',
-            color: 'var(--accent)',
-            fontWeight: 600,
-            letterSpacing: '2px',
-            textTransform: 'uppercase',
-            marginBottom: '0.5rem',
-          }}>
-            Where I've Worked
-          </p>
           <h2 style={{
-            fontSize: 'clamp(2rem, 4vw, 2.5rem)',
+            fontFamily: 'var(--font-display)',
+            fontSize: 'clamp(2rem, 5vw, 3rem)',
             fontWeight: 700,
-            fontFamily: "'Space Grotesk', sans-serif",
+            color: 'var(--teal)',
           }}>
-            My <span style={{ color: 'var(--accent)' }}>Experience</span>
+            Where I've Worked ✦
           </h2>
         </motion.div>
 
         <div style={{ position: 'relative' }}>
-          {/* Timeline line */}
           <div style={{
             position: 'absolute',
-            left: '24px',
+            left: '22px',
             top: 0,
             bottom: 0,
-            width: '2px',
-            background: 'var(--border)',
+            width: '3px',
+            background: 'var(--pink)',
+            borderRadius: '2px',
           }} />
 
           {experiences.map((exp, i) => (
             <motion.div
               key={exp.company}
-              initial={{ opacity: 0, x: -50 }}
+              initial={{ opacity: 0, x: -40 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.6, delay: i * 0.2 }}
               style={{
                 position: 'relative',
-                paddingLeft: '60px',
-                marginBottom: '3rem',
+                paddingLeft: '56px',
+                marginBottom: '2.5rem',
               }}
             >
-              {/* Timeline dot */}
               <div style={{
                 position: 'absolute',
-                left: '14px',
-                width: '22px',
-                height: '22px',
+                left: '10px',
+                width: '28px',
+                height: '28px',
                 borderRadius: '50%',
-                background: 'var(--accent)',
-                border: '3px solid var(--bg-primary)',
-                boxShadow: '0 0 0 3px var(--accent-glow)',
+                background: exp.color,
+                border: '4px solid var(--cream)',
               }} />
 
-              <div style={{
-                background: 'var(--bg-card)',
-                borderRadius: '20px',
-                padding: '1.5rem',
-                boxShadow: 'var(--shadow)',
-                border: '1px solid var(--border)',
-                position: 'relative',
-                overflow: 'hidden',
-              }}>
+              <motion.div
+                whileHover={{ y: -4 }}
+                style={{
+                  background: 'var(--white)',
+                  borderRadius: '20px',
+                  padding: '1.8rem',
+                  boxShadow: 'var(--shadow-card)',
+                  position: 'relative',
+                  overflow: 'hidden',
+                }}
+              >
                 <div style={{
                   position: 'absolute',
                   top: 0,
                   left: 0,
                   right: 0,
-                  height: '3px',
-                  background: 'var(--gradient)',
+                  height: '4px',
+                  background: exp.color,
                 }} />
 
-                <div style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.75rem',
-                  marginBottom: '0.5rem',
+                <span style={{
+                  fontFamily: 'var(--font-body)',
+                  fontSize: '0.8rem',
+                  fontWeight: 600,
+                  color: exp.color,
+                  background: `color-mix(in srgb, ${exp.color} 10%, white)`,
+                  padding: '0.3rem 0.8rem',
+                  borderRadius: '50px',
+                  display: 'inline-block',
+                  marginBottom: '0.8rem',
                 }}>
-                  <HiBriefcase style={{ color: 'var(--accent)', fontSize: '1.2rem' }} />
-                  <span style={{
-                    fontSize: '0.85rem',
-                    color: 'var(--text-muted)',
-                    fontWeight: 500,
-                  }}>
-                    {exp.period}
-                  </span>
-                </div>
+                  {exp.period}
+                </span>
 
                 <h3 style={{
+                  fontFamily: 'var(--font-display)',
                   fontSize: '1.3rem',
                   fontWeight: 700,
-                  fontFamily: "'Space Grotesk', sans-serif",
-                  marginBottom: '0.25rem',
+                  color: '#1a1a1a',
+                  marginBottom: '0.3rem',
                 }}>
                   {exp.role}
                 </h3>
 
                 <p style={{
-                  fontSize: '1rem',
+                  fontFamily: 'var(--font-body)',
+                  fontSize: '0.95rem',
                   fontWeight: 600,
-                  color: 'var(--accent)',
-                  marginBottom: '0.25rem',
+                  color: exp.color,
+                  marginBottom: '0.2rem',
                 }}>
-                  {exp.company} <span style={{ fontWeight: 400, color: 'var(--text-muted)' }}>| {exp.fullCompany}</span>
+                  {exp.company}
                 </p>
-
                 <p style={{
-                  fontSize: '0.85rem',
-                  color: 'var(--text-muted)',
+                  fontFamily: 'var(--font-body)',
+                  fontSize: '0.8rem',
+                  color: '#999',
                   marginBottom: '1rem',
                 }}>
-                  {exp.location}
+                  {exp.fullCompany} · {exp.location}
                 </p>
 
                 <ul style={{
                   listStyle: 'none',
                   display: 'flex',
                   flexDirection: 'column',
-                  gap: '0.75rem',
+                  gap: '0.7rem',
                 }}>
                   {exp.description.map((desc, di) => (
-                    <motion.li
-                      key={di}
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={isInView ? { opacity: 1, x: 0 } : {}}
-                      transition={{ delay: i * 0.2 + di * 0.1 }}
-                      style={{
-                        display: 'flex',
-                        alignItems: 'flex-start',
-                        gap: '0.75rem',
-                        color: 'var(--text-secondary)',
-                        fontSize: '0.9rem',
-                        lineHeight: 1.7,
-                      }}
-                    >
+                    <li key={di} style={{
+                      display: 'flex',
+                      alignItems: 'flex-start',
+                      gap: '0.7rem',
+                      fontFamily: 'var(--font-body)',
+                      fontSize: '0.9rem',
+                      color: '#555',
+                      lineHeight: 1.6,
+                    }}>
                       <span style={{
-                        minWidth: '6px',
-                        height: '6px',
+                        minWidth: '7px',
+                        height: '7px',
                         borderRadius: '50%',
-                        background: 'var(--accent)',
+                        background: exp.color,
                         marginTop: '8px',
+                        flexShrink: 0,
                       }} />
                       {desc}
-                    </motion.li>
+                    </li>
                   ))}
                 </ul>
-              </div>
+              </motion.div>
             </motion.div>
           ))}
         </div>

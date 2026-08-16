@@ -1,224 +1,180 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { HiArrowDown, HiDownload } from 'react-icons/hi'
-import { FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa'
+import { HiArrowRight } from 'react-icons/hi'
+
+const roles = ['Full Stack Developer', 'AI Enthusiast', 'Problem Solver']
 
 export default function Hero() {
-  const roles = ['Full Stack Developer', 'AI Enthusiast', 'Problem Solver']
-
   return (
     <section id="home" style={{
       minHeight: '100vh',
+      background: 'linear-gradient(135deg, #FFB6C1 0%, #FF69B4 50%, #FF1493 100%)',
       display: 'flex',
       alignItems: 'center',
-      justifyContent: 'center',
       position: 'relative',
       overflow: 'hidden',
-      padding: '2rem',
+      padding: '6rem 3rem 4rem',
     }}>
-      {/* Animated Background */}
+      {/* Dot grid texture - top right */}
       <div style={{
         position: 'absolute',
-        inset: 0,
-        overflow: 'hidden',
-      }}>
-        {[...Array(20)].map((_, i) => (
-          <motion.div
-            key={i}
-            style={{
-              position: 'absolute',
-              width: Math.random() * 300 + 50,
-              height: Math.random() * 300 + 50,
-              borderRadius: '50%',
-              background: `radial-gradient(circle, var(--accent-glow) 0%, transparent 70%)`,
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              opacity: 0.3,
-            }}
-            animate={{
-              x: [0, Math.random() * 100 - 50],
-              y: [0, Math.random() * 100 - 50],
-              scale: [1, 1.2, 1],
-            }}
-            transition={{
-              duration: Math.random() * 10 + 10,
-              repeat: Infinity,
-              repeatType: 'reverse',
-            }}
-          />
-        ))}
-      </div>
+        top: 0,
+        right: 0,
+        width: '40%',
+        height: '100%',
+        opacity: 0.12,
+        backgroundImage: 'radial-gradient(circle, #1a1a1a 1.5px, transparent 1.5px)',
+        backgroundSize: '24px 24px',
+        pointerEvents: 'none',
+      }} />
 
-      <div style={{ position: 'relative', zIndex: 1, textAlign: 'center', maxWidth: '800px' }}>
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+      {/* Scattered sparkles */}
+      {['✦', '✧', '⋆', '✦', '✧'].map((s, i) => (
+        <motion.span
+          key={i}
+          style={{
+            position: 'absolute',
+            fontSize: `${18 + i * 6}px`,
+            color: 'var(--chartreuse)',
+            top: `${15 + i * 18}%`,
+            left: `${5 + i * 20}%`,
+            opacity: 0.6,
+            pointerEvents: 'none',
+          }}
+          animate={{ rotate: [0, 20, -20, 0], scale: [1, 1.2, 1] }}
+          transition={{ duration: 3 + i, repeat: Infinity, repeatType: 'reverse' }}
         >
-          <motion.p
-            style={{
-              fontSize: '1rem',
-              color: 'var(--accent)',
-              fontWeight: 500,
-              marginBottom: '1rem',
-              letterSpacing: '2px',
-              textTransform: 'uppercase',
-            }}
-          >
-            Hello, I'm
-          </motion.p>
+          {s}
+        </motion.span>
+      ))}
 
-          <motion.h1
-            style={{
-              fontSize: 'clamp(2.5rem, 8vw, 5rem)',
-              fontWeight: 800,
-              lineHeight: 1.1,
-              marginBottom: '1rem',
-              fontFamily: "'Space Grotesk', sans-serif",
-            }}
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+      <div style={{
+        maxWidth: '1300px',
+        margin: '0 auto',
+        width: '100%',
+        display: 'grid',
+        gridTemplateColumns: '1fr 1fr',
+        gap: '3rem',
+        alignItems: 'center',
+        position: 'relative',
+        zIndex: 1,
+      }} className="hero-grid">
+        <div>
+          {/* Tilted wordmark */}
+          <motion.div
+            initial={{ opacity: 0, x: -60 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7 }}
+            style={{ transform: 'rotate(-3deg)', transformOrigin: 'left center', marginBottom: '1rem' }}
           >
-            <span style={{ background: 'var(--gradient)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+            <h1 style={{
+              fontFamily: 'var(--font-display)',
+              fontSize: 'clamp(3.5rem, 7vw, 6rem)',
+              fontWeight: 700,
+              color: 'var(--white)',
+              lineHeight: 1,
+              textShadow: '4px 4px 0px rgba(0,0,0,0.08)',
+            }}>
               Shivani
-            </span>{' '}
-            Shenoy
-          </motion.h1>
+            </h1>
+            <h1 style={{
+              fontFamily: 'var(--font-display)',
+              fontSize: 'clamp(3.5rem, 7vw, 6rem)',
+              fontWeight: 700,
+              color: '#1a1a1a',
+              lineHeight: 1,
+              marginLeft: '2rem',
+              textShadow: '3px 3px 0px rgba(255,255,255,0.3)',
+            }}>
+              Shenoy
+            </h1>
+          </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            style={{ height: '2rem', marginBottom: '1.5rem' }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            style={{ height: '2.2rem', marginBottom: '1.5rem' }}
           >
             <Typewriter roles={roles} />
           </motion.div>
 
           <motion.p
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
             style={{
+              fontFamily: 'var(--font-body)',
               fontSize: '1.1rem',
-              color: 'var(--text-secondary)',
-              maxWidth: '600px',
-              margin: '0 auto 2rem',
+              color: '#4a2040',
+              maxWidth: '480px',
               lineHeight: 1.7,
+              marginBottom: '2rem',
             }}
           >
-            Computer Science student at TSEC, passionate about building AI-powered solutions
-            and full-stack applications that make a difference.
+            Computer Science student building AI-powered solutions and full-stack apps
+            that actually make a difference.
           </motion.p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
-            style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}
-          >
-            <motion.a
-              href="#contact"
-              style={{
-                padding: '0.8rem 2rem',
-                background: 'var(--gradient)',
-                color: 'white',
-                borderRadius: '50px',
-                fontWeight: 600,
-                fontSize: '0.95rem',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.5rem',
-              }}
-              whileHover={{ scale: 1.05, boxShadow: '0 10px 30px var(--accent-glow)' }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Get In Touch
-            </motion.a>
-
-            <motion.a
-              href="https://drive.google.com/file/d/11QNlvFkVBAeYQV1S7mjrd91xBT7-2qe4/view?usp=drive_link"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                padding: '0.8rem 2rem',
-                background: 'var(--bg-card)',
-                border: '2px solid var(--border)',
-                color: 'var(--text-primary)',
-                borderRadius: '50px',
-                fontWeight: 600,
-                fontSize: '0.95rem',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.5rem',
-              }}
-              whileHover={{ scale: 1.05, borderColor: 'var(--accent)' }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <HiDownload /> Resume
-            </motion.a>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.2 }}
-            style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center', marginTop: '3rem' }}
-          >
-            {[
-              { icon: FaLinkedin, href: 'https://www.linkedin.com/in/shivani-shenoy-593916300/' },
-              { icon: FaGithub, href: 'https://github.com/shenoyshivani' },
-              { icon: FaEnvelope, href: 'mailto:shivanishenoy17@gmail.com' },
-            ].map(({ icon: Icon, href }, i) => (
-              <motion.a
-                key={i}
-                href={href}
-                target={href.startsWith('http') ? '_blank' : undefined}
-                rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                style={{
-                  width: 48,
-                  height: 48,
-                  borderRadius: '50%',
-                  border: '2px solid var(--border)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontSize: '1.2rem',
-                  color: 'var(--text-secondary)',
-                  transition: 'all 0.3s ease',
-                }}
-                whileHover={{
-                  scale: 1.1,
-                  borderColor: 'var(--accent)',
-                  color: 'var(--accent)',
-                  y: -3,
-                }}
-              >
-                <Icon />
-              </motion.a>
-            ))}
-          </motion.div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 2 }}
-          style={{ position: 'absolute', bottom: '-100px', left: '50%', transform: 'translateX(-50%)' }}
-        >
           <motion.a
-            href="#about"
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
+            href="#contact"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.7 }}
+            className="pill-btn"
             style={{
-              color: 'var(--text-muted)',
-              fontSize: '1.5rem',
+              background: 'var(--white)',
+              color: 'var(--magenta)',
+              boxShadow: '0 8px 30px rgba(0,0,0,0.12)',
             }}
+            whileHover={{ scale: 1.06, boxShadow: '0 12px 40px rgba(0,0,0,0.18)' }}
+            whileTap={{ scale: 0.96 }}
           >
-            <HiArrowDown />
+            Let's Talk <HiArrowRight />
           </motion.a>
+        </div>
+
+        {/* Photo area */}
+        <motion.div
+          initial={{ opacity: 0, x: 80, rotate: 4 }}
+          animate={{ opacity: 1, x: 0, rotate: 3 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          style={{
+            display: 'flex',
+            justifyContent: 'flex-end',
+            alignItems: 'center',
+          }}
+          className="hero-photo"
+        >
+          <div style={{
+            width: 'min(420px, 100%)',
+            height: '520px',
+            borderRadius: '24px',
+            background: 'linear-gradient(160deg, var(--chartreuse) 0%, var(--orange) 100%)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: '8rem',
+            boxShadow: '0 20px 60px rgba(0,0,0,0.15)',
+            overflow: 'hidden',
+            position: 'relative',
+          }}>
+            <div style={{
+              position: 'absolute',
+              inset: 0,
+              background: 'linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.1))',
+            }} />
+            <span style={{ position: 'relative', zIndex: 1, filter: 'drop-shadow(2px 2px 4px rgba(0,0,0,0.1))' }}>👩‍💻</span>
+          </div>
         </motion.div>
       </div>
+
+      <style>{`
+        @media (max-width: 900px) {
+          .hero-grid { grid-template-columns: 1fr !important; text-align: center; }
+          .hero-photo { justify-content: center !important; }
+        }
+      `}</style>
     </section>
   )
 }
@@ -243,19 +199,20 @@ function Typewriter({ roles }) {
           setIndex((prev) => (prev + 1) % roles.length)
         }
       }
-    }, isDeleting ? 50 : 100)
+    }, isDeleting ? 40 : 90)
 
     return () => clearTimeout(timeout)
   }, [text, isDeleting, index, roles])
 
   return (
     <span style={{
-      fontSize: '1.2rem',
-      color: 'var(--accent)',
+      fontFamily: 'var(--font-display)',
+      fontSize: '1.4rem',
+      color: '#1a1a1a',
       fontWeight: 600,
     }}>
       {text}
-      <span style={{ animation: 'blink 1s infinite' }}>|</span>
+      <span style={{ animation: 'blink 1s infinite', color: 'var(--chartreuse)' }}>|</span>
       <style>{`
         @keyframes blink {
           0%, 50% { opacity: 1; }
