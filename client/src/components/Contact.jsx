@@ -2,7 +2,7 @@ import { motion, useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
 import { FaLinkedin, FaGithub, FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa'
 
-const WEB3FORMS_KEY = 'YOUR_WEB3FORMS_ACCESS_KEY'
+const WEB3FORMS_KEY = '95015ebb-9c2a-4d15-a81a-846e53791c54'
 
 export default function Contact() {
   const ref = useRef(null)
