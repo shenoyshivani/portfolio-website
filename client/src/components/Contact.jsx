@@ -1,7 +1,8 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
 import { FaLinkedin, FaGithub, FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa'
-import axios from 'axios'
+
+const WEB3FORMS_KEY = 'YOUR_WEB3FORMS_ACCESS_KEY'
 
 export default function Contact() {
   const ref = useRef(null)
@@ -15,14 +16,26 @@ export default function Contact() {
     setIsSubmitting(true)
     setStatus({ type: '', message: '' })
     try {
-      const res = await axios.post('/api/contact', formData)
-      setStatus({ type: 'success', message: res.data.message })
-      setFormData({ name: '', email: '', subject: '', message: '' })
-    } catch (err) {
-      setStatus({
-        type: 'error',
-        message: err.response?.data?.error || 'Failed to send message. Please try again.'
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+        }),
       })
+      const data = await res.json()
+      if (data.success) {
+        setStatus({ type: 'success', message: 'Message sent successfully!' })
+        setFormData({ name: '', email: '', subject: '', message: '' })
+      } else {
+        setStatus({ type: 'error', message: 'Failed to send message. Please try again.' })
+      }
+    } catch {
+      setStatus({ type: 'error', message: 'Failed to send message. Please try again.' })
     } finally {
       setIsSubmitting(false)
     }
@@ -58,7 +71,7 @@ export default function Contact() {
             fontWeight: 700,
             color: 'var(--magenta)',
           }}>
-            Let's Connect ✦
+            Let's Connect !
           </h2>
           <p style={{
             fontFamily: 'var(--font-body)',
@@ -329,7 +342,7 @@ export default function Contact() {
                 whileHover={!isSubmitting ? { scale: 1.03 } : {}}
                 whileTap={!isSubmitting ? { scale: 0.97 } : {}}
               >
-                {isSubmitting ? 'Sending...' : 'Send Message ✦'}
+                {isSubmitting ? 'Sending...' : 'Send Message '}
               </motion.button>
             </form>
           </motion.div>
