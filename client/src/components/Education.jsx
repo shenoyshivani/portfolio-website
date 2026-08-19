@@ -25,6 +25,13 @@ const certifications = [
     link: 'https://drive.google.com/file/d/1sNJVEpaBy74FQ57jvYHeQqmS2bwPAGMa/view?usp=sharing',
     color: 'var(--teal)',
   },
+  {
+    name: 'Agentic AI for Fintech Enterprises',
+    issuer: 'TSEC',
+    period: '2025',
+    link: 'https://drive.google.com/file/d/1EGu3fzuSQYV8SLnNuUduT4HCOamo59eR/view?usp=sharing',
+    color: 'var(--orange)',
+  },
 ]
 
 export default function Education() {
@@ -49,7 +56,7 @@ export default function Education() {
             fontWeight: 700,
             color: 'var(--orange)',
           }}>
-            Education & Certs ✦
+            Education & Certifications ✦
           </h2>
         </motion.div>
 

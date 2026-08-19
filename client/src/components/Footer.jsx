@@ -23,7 +23,6 @@ export default function Footer() {
           gap: '3rem',
           marginBottom: '3rem',
         }} className="footer-grid">
-          {/* Column 1 - Links */}
           <div>
             <h4 style={{
               fontFamily: 'var(--font-display)',
@@ -40,7 +39,6 @@ export default function Footer() {
                   fontFamily: 'var(--font-body)',
                   fontSize: '0.9rem',
                   color: 'rgba(255,255,255,0.7)',
-                  transition: 'color 0.2s',
                 }}>
                   {link}
                 </a>
@@ -48,7 +46,6 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Column 2 - Links */}
           <div>
             <h4 style={{
               fontFamily: 'var(--font-display)',
@@ -69,7 +66,6 @@ export default function Footer() {
                   fontFamily: 'var(--font-body)',
                   fontSize: '0.9rem',
                   color: 'rgba(255,255,255,0.7)',
-                  transition: 'color 0.2s',
                 }}>
                   {link.label}
                 </a>
@@ -77,7 +73,6 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Column 3 - Email Signup */}
           <div>
             <h4 style={{
               fontFamily: 'var(--font-display)',
@@ -97,10 +92,7 @@ export default function Footer() {
             }}>
               Drop your email for updates and good vibes.
             </p>
-            <div style={{
-              display: 'flex',
-              gap: '0.5rem',
-            }}>
+            <div style={{ display: 'flex', gap: '0.5rem' }}>
               <input
                 type="email"
                 placeholder="your@email.com"
@@ -136,7 +128,6 @@ export default function Footer() {
               </motion.button>
             </div>
 
-            {/* Social icons */}
             <div style={{ display: 'flex', gap: '0.6rem', marginTop: '1.5rem' }}>
               {[
                 { icon: FaLinkedin, href: 'https://www.linkedin.com/in/shivani-shenoy-593916300/' },
@@ -168,7 +159,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom bar */}
         <div style={{
           display: 'flex',
           justifyContent: 'space-between',
@@ -212,7 +202,6 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Large outlined wordmark bleeding off bottom */}
       <div style={{
         fontFamily: 'var(--font-display)',
         fontSize: 'clamp(5rem, 15vw, 14rem)',

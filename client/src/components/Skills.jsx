@@ -59,7 +59,6 @@ export default function Skills() {
           </h2>
         </motion.div>
 
-        {/* Asymmetric collage layout */}
         <div style={{
           display: 'grid',
           gridTemplateColumns: '1fr 1.2fr 0.9fr',
@@ -132,7 +131,6 @@ export default function Skills() {
             )
           })}
 
-          {/* Decorative solid color tile */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
