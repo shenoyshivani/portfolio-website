@@ -130,26 +130,6 @@ export default function Skills() {
               </motion.div>
             )
           })}
-
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ duration: 0.5, delay: 0.6 }}
-            style={{
-              gridColumn: '3 / 4',
-              gridRow: '2 / 3',
-              background: 'var(--chartreuse)',
-              borderRadius: '20px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontSize: '3rem',
-              minHeight: '120px',
-              transform: 'rotate(-3deg)',
-            }}
-          >
-            ✨
-          </motion.div>
         </div>
       </div>
 
