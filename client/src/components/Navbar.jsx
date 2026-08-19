@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { HiMenu, HiX, HiUser } from 'react-icons/hi'
+import { HiMenu, HiX } from 'react-icons/hi'
 
 const navLinks = [
   { name: 'Work', href: '#projects' },
@@ -83,24 +83,6 @@ export default function Navbar() {
               {link.name}
             </motion.a>
           ))}
-          <motion.a
-            href="#contact"
-            style={{
-              width: 40,
-              height: 40,
-              borderRadius: '50%',
-              background: 'var(--magenta)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: 'white',
-              fontSize: '1.1rem',
-            }}
-            whileHover={{ scale: 1.15, rotate: 10 }}
-            whileTap={{ scale: 0.9 }}
-          >
-            <HiUser />
-          </motion.a>
         </div>
 
         <div className="mobile-menu-btn" style={{ display: 'none' }}>
