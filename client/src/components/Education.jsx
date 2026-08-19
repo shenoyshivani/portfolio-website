@@ -12,6 +12,13 @@ const education = {
 
 const certifications = [
   {
+    name: 'Agentic AI for Fintech Enterprises',
+    issuer: 'TSEC',
+    period: 'Jul 2026',
+    link: 'https://drive.google.com/file/d/1EGu3fzuSQYV8SLnNuUduT4HCOamo59eR/view?usp=sharing',
+    color: 'var(--orange)',
+  },
+  {
     name: 'Full Stack Development',
     issuer: 'Udemy',
     period: 'Jun 2024 - Jan 2025',
@@ -24,13 +31,6 @@ const certifications = [
     period: 'Feb 2025',
     link: 'https://drive.google.com/file/d/1sNJVEpaBy74FQ57jvYHeQqmS2bwPAGMa/view?usp=sharing',
     color: 'var(--teal)',
-  },
-  {
-    name: 'Agentic AI for Fintech Enterprises',
-    issuer: 'TSEC',
-    period: 'Jul 2026',
-    link: 'https://drive.google.com/file/d/1EGu3fzuSQYV8SLnNuUduT4HCOamo59eR/view?usp=sharing',
-    color: 'var(--orange)',
   },
 ]
 
