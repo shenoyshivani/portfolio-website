@@ -7,7 +7,7 @@ const education = {
   degree: 'B.E. in Computer Science and Engineering',
   cgpa: '8.49',
   period: 'Aug 2023 - Present',
-  courses: ['Computer Networks', 'DBMS', 'Operating System', 'OOP'],
+  courses: ['Computer Networks', 'DBMS', 'Operating System', 'OOP', 'Data Structures and Algorithms'],
 }
 
 const certifications = [

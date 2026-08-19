@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { FaHeart } from 'react-icons/fa'
+import { FaHeart, FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa'
 import { HiArrowUp } from 'react-icons/hi'
 
 export default function Footer() {
@@ -9,103 +9,109 @@ export default function Footer() {
     <footer style={{
       background: 'var(--dark-green)',
       color: 'white',
-      position: 'relative',
-      overflow: 'hidden',
     }}>
       <div style={{
-        maxWidth: '1100px',
+        maxWidth: '800px',
         margin: '0 auto',
-        padding: '4rem 2rem 2rem',
+        padding: '3.5rem 2rem 1.5rem',
+        textAlign: 'center',
       }}>
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          gap: '3rem',
-          marginBottom: '3rem',
-        }} className="footer-grid">
-          <div>
-            <h4 style={{
-              fontFamily: 'var(--font-display)',
-              fontSize: '1rem',
-              fontWeight: 600,
-              color: 'var(--chartreuse)',
-              marginBottom: '1rem',
-            }}>
-              Navigate
-            </h4>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
-              {['Work', 'About', 'Skills', 'Experience', 'Contact'].map(link => (
-                <a key={link} href={`#${link.toLowerCase()}`} style={{
-                  fontFamily: 'var(--font-body)',
-                  fontSize: '0.9rem',
-                  color: 'rgba(255,255,255,0.7)',
-                }}>
-                  {link}
-                </a>
-              ))}
-            </div>
-          </div>
+        <h3 style={{
+          fontFamily: 'var(--font-display)',
+          fontSize: '1.4rem',
+          fontWeight: 700,
+          color: 'var(--chartreuse)',
+          marginBottom: '1.5rem',
+        }}>
+          Let's Work Together
+        </h3>
 
-          <div>
-            <h4 style={{
-              fontFamily: 'var(--font-display)',
-              fontSize: '1rem',
-              fontWeight: 600,
-              color: 'var(--chartreuse)',
-              marginBottom: '1rem',
+        <div style={{
+          display: 'flex',
+          justifyContent: 'center',
+          gap: '2rem',
+          flexWrap: 'wrap',
+          marginBottom: '2rem',
+        }}>
+          {['Work', 'About', 'Skills', 'Experience', 'Contact'].map(link => (
+            <a key={link} href={`#${link.toLowerCase()}`} style={{
+              fontFamily: 'var(--font-body)',
+              fontSize: '0.9rem',
+              fontWeight: 500,
+              color: 'rgba(255,255,255,0.7)',
+              transition: 'color 0.2s',
             }}>
-              Connect
-            </h4>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
-              {[
-                { label: 'LinkedIn', href: 'https://www.linkedin.com/in/shivani-shenoy-593916300/' },
-                { label: 'GitHub', href: 'https://github.com/shenoyshivani' },
-                { label: 'Email', href: 'mailto:shivanishenoy17@gmail.com' },
-              ].map(link => (
-                <a key={link.label} href={link.href} target="_blank" rel="noopener noreferrer" style={{
-                  fontFamily: 'var(--font-body)',
-                  fontSize: '0.9rem',
-                  color: 'rgba(255,255,255,0.7)',
-                }}>
-                  {link.label}
-                </a>
-              ))}
-            </div>
-          </div>
+              {link}
+            </a>
+          ))}
         </div>
 
         <div style={{
           display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          flexWrap: 'wrap',
-          gap: '1rem',
-          paddingTop: '2rem',
+          justifyContent: 'center',
+          gap: '0.7rem',
+          marginBottom: '2.5rem',
+        }}>
+          {[
+            { icon: FaLinkedin, href: 'https://www.linkedin.com/in/shivani-shenoy-593916300/' },
+            { icon: FaGithub, href: 'https://github.com/shenoyshivani' },
+            { icon: FaEnvelope, href: 'mailto:shivanishenoy17@gmail.com' },
+          ].map(({ icon: Icon, href }, i) => (
+            <motion.a
+              key={i}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.15, y: -2 }}
+              style={{
+                width: '42px',
+                height: '42px',
+                borderRadius: '12px',
+                background: 'rgba(255,255,255,0.1)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: 'white',
+                fontSize: '1.1rem',
+              }}
+            >
+              <Icon />
+            </motion.a>
+          ))}
+        </div>
+
+        <div style={{
           borderTop: '1px solid rgba(255,255,255,0.1)',
+          paddingTop: '1.5rem',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          gap: '1rem',
+          flexWrap: 'wrap',
         }}>
           <p style={{
             fontFamily: 'var(--font-body)',
             fontSize: '0.8rem',
-            color: 'rgba(255,255,255,0.5)',
+            color: 'rgba(255,255,255,0.45)',
             display: 'flex',
             alignItems: 'center',
             gap: '0.4rem',
           }}>
-            Made with <FaHeart style={{ color: 'var(--magenta)', fontSize: '0.75rem' }} /> by Shivani Shenoy
+            Made with <FaHeart style={{ color: 'var(--magenta)', fontSize: '0.7rem' }} /> by Shivani Shenoy
           </p>
 
           <motion.button
             onClick={scrollToTop}
-            whileHover={{ scale: 1.1, y: -3 }}
+            whileHover={{ scale: 1.1, y: -2 }}
             whileTap={{ scale: 0.9 }}
             style={{
-              width: '40px',
-              height: '40px',
-              borderRadius: '12px',
+              width: '34px',
+              height: '34px',
+              borderRadius: '10px',
               background: 'var(--magenta)',
               border: 'none',
               color: 'white',
-              fontSize: '1.2rem',
+              fontSize: '1rem',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -116,12 +122,6 @@ export default function Footer() {
           </motion.button>
         </div>
       </div>
-
-      <style>{`
-        @media (max-width: 768px) {
-          .footer-grid { grid-template-columns: 1fr !important; }
-        }
-      `}</style>
     </footer>
   )
 }
