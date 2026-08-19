@@ -28,7 +28,7 @@ const certifications = [
   {
     name: 'Agentic AI for Fintech Enterprises',
     issuer: 'TSEC',
-    period: '2025',
+    period: 'Jul 2026',
     link: 'https://drive.google.com/file/d/1EGu3fzuSQYV8SLnNuUduT4HCOamo59eR/view?usp=sharing',
     color: 'var(--orange)',
   },
