@@ -11,19 +11,13 @@ const projects = [
     emoji: '🤖',
   },
   {
-    title: 'Fashion Reco',
-    subtitle: 'AI Fashion Stylist',
+    title: 'Fashion Recommendation System ',
+    subtitle: ' Fashion Stylist',
     tech: ['Python', 'TensorFlow', 'OpenCV', 'ML'],
     color: 'var(--teal)',
     emoji: '👗',
   },
-  {
-    title: 'Portfolio Site',
-    subtitle: 'Full-Stack Web App',
-    tech: ['React', 'Node.js', 'MongoDB', 'Express'],
-    color: 'var(--orange)',
-    emoji: '🌐',
-  },
+
 ]
 
 const Sparkle = ({ style }) => (
