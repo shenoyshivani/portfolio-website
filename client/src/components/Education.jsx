@@ -19,6 +19,13 @@ const certifications = [
     color: 'var(--orange)',
   },
   {
+    name: 'Eureka Pitchfest 2026',
+    issuer: "Institution's Innovation Council",
+    period: '2026',
+    link: 'https://drive.google.com/file/d/1j2AcxURgdiLpLd3lUCUZBQG2_rSMlSVw/view?usp=drive_link',
+    color: 'var(--magenta)',
+  },
+  {
     name: 'Full Stack Development',
     issuer: 'Udemy',
     period: 'Jun 2024 - Jan 2025',
