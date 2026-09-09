@@ -4,13 +4,13 @@ import { useRef } from 'react'
 const skillCategories = [
   {
     title: 'Languages',
-    skills: ['Python', 'C++', 'NumPy', 'Pandas'],
+    skills: ['Python', 'C++'],
     color: 'var(--magenta)',
     emoji: '💻',
   },
   {
     title: 'Frameworks',
-    skills: ['React.js', 'Node.js', 'Express.js', 'LangChain'],
+    skills: ['React.js', 'Node.js', 'Express.js', 'LangChain', 'NumPy', 'Pandas'],
     color: 'var(--teal)',
     emoji: '⚡',
   },
@@ -22,7 +22,7 @@ const skillCategories = [
   },
   {
     title: 'Tools',
-    skills: ['GitHub', 'Postman', 'REST APIs', 'JWT'],
+    skills: ['GitHub', 'Postman', 'REST APIs', 'JWT', 'Canva'],
     color: 'var(--green)',
     emoji: '🛠️',
   },
@@ -61,36 +61,24 @@ export default function Skills() {
 
         <div style={{
           display: 'grid',
-          gridTemplateColumns: '1fr 1.2fr 0.9fr',
-          gridTemplateRows: 'auto auto',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
           gap: '1.2rem',
-        }} className="collage-grid">
-          {skillCategories.map((cat, i) => {
-            const offsets = [
-              { gridColumn: '1 / 2', gridRow: '1 / 2', rotate: -2 },
-              { gridColumn: '2 / 3', gridRow: '1 / 3', rotate: 1 },
-              { gridColumn: '3 / 4', gridRow: '1 / 2', rotate: 3 },
-              { gridColumn: '1 / 2', gridRow: '2 / 3', rotate: 2 },
-            ]
-            const off = offsets[i]
-
-            return (
-              <motion.div
-                key={cat.title}
-                initial={{ opacity: 0, y: 30, rotate: off.rotate * 2 }}
-                animate={isInView ? { opacity: 1, y: 0, rotate: off.rotate } : {}}
-                transition={{ duration: 0.5, delay: i * 0.12 }}
-                whileHover={{ scale: 1.04, rotate: 0, boxShadow: '0 16px 48px rgba(0,0,0,0.1)' }}
-                style={{
-                  ...off,
-                  background: `color-mix(in srgb, ${cat.color} 8%, white)`,
-                  borderRadius: '20px',
-                  padding: '1.8rem',
-                  border: `2px solid color-mix(in srgb, ${cat.color} 20%, white)`,
-                  transition: 'box-shadow 0.3s ease',
-                  alignSelf: 'start',
-                }}
-              >
+        }}>
+          {skillCategories.map((cat, i) => (
+            <motion.div
+              key={cat.title}
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              whileHover={{ scale: 1.04, boxShadow: '0 16px 48px rgba(0,0,0,0.1)' }}
+              style={{
+                background: `color-mix(in srgb, ${cat.color} 8%, white)`,
+                borderRadius: '20px',
+                padding: '1.8rem',
+                border: `2px solid color-mix(in srgb, ${cat.color} 20%, white)`,
+                transition: 'box-shadow 0.3s ease',
+              }}
+            >
                 <div style={{
                   display: 'flex',
                   alignItems: 'center',
@@ -128,20 +116,14 @@ export default function Skills() {
                   ))}
                 </div>
               </motion.div>
-            )
-          })}
+          ))}
         </div>
       </div>
 
       <style>{`
-        @media (max-width: 800px) {
-          .collage-grid {
+        @media (max-width: 600px) {
+          #skills > div > div:last-child {
             grid-template-columns: 1fr !important;
-            grid-template-rows: auto !important;
-          }
-          .collage-grid > * {
-            grid-column: auto !important;
-            grid-row: auto !important;
           }
         }
       `}</style>
