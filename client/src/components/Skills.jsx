@@ -9,7 +9,7 @@ const skillCategories = [
     emoji: '💻',
   },
   {
-    title: 'Frameworks',
+    title: 'Frameworks/Libraries',
     skills: ['React.js', 'Node.js', 'Express.js', 'LangChain', 'NumPy', 'Pandas'],
     color: 'var(--teal)',
     emoji: '⚡',
@@ -22,9 +22,15 @@ const skillCategories = [
   },
   {
     title: 'Tools',
-    skills: ['GitHub', 'Postman', 'REST APIs', 'JWT', 'Canva'],
+    skills: ['GitHub', 'Postman', 'Canva'],
     color: 'var(--green)',
     emoji: '🛠️',
+  },
+  {
+    title: 'Other',
+    skills: ['REST APIs', 'JWT'],
+    color: 'var(--magenta)',
+    emoji: '🔹',
   },
 ]
 
