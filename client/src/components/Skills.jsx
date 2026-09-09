@@ -4,13 +4,13 @@ import { useRef } from 'react'
 const skillCategories = [
   {
     title: 'Languages',
-    skills: ['Python', 'C++'],
+    skills: ['Python', 'C++', 'NumPy', 'Pandas'],
     color: 'var(--magenta)',
     emoji: '💻',
   },
   {
     title: 'Frameworks',
-    skills: ['React.js', 'Node.js', 'Express.js', 'Streamlit', 'LangChain'],
+    skills: ['React.js', 'Node.js', 'Express.js', 'LangChain'],
     color: 'var(--teal)',
     emoji: '⚡',
   },
